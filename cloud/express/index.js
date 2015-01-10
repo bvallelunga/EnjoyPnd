@@ -62,7 +62,7 @@ app.post('/login', routes.core.login)
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)
 app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
 app.post('/api/jobs', routes.api.post.jobs)
-
+app.get('/api/jobstatus', routes.api.get.jobStatus)
 // Not Found Redirect
 app.all("*", routes.core.notfound)
 
