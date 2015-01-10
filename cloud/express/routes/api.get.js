@@ -45,4 +45,21 @@ module.exports.workers = function(req, res) {
       workers: workers
     })
   }, res.errorT)
-}
+
+module.exports.pendingWorkers = function(req, res) {
+  
+  var company = req.company
+  var query = company.relation("pendingWorkers").query()
+  var pworkers = []
+  
+  query.each(function(pendingWorker) {
+    pworkers.push({
+      name: pendingWorker.get("name"),
+      desc: pendingWorker.get("description")
+    })
+  }).then(function(){
+    res.successT({
+      pendingWorkers: pworkers
+    })
+  }, res.errorT)
+}}
