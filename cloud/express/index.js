@@ -7,9 +7,7 @@ Parse.Cloud.useMasterKey()
 // Routes
 var routes = {
   core: require("cloud/express/routes/index.js"),
-  api: {
-    get: require("cloud/express/routes/api.get.js")
-  }
+  api: require("cloud/express/routes/api.js"),
 }
 
 // Global app configuration section
@@ -59,8 +57,8 @@ app.use(function(req, res, next) {
 app.get('/', routes.core.home)
 
 // API
-app.get('/api/workers', routes.api.get.auth, routes.api.get.workers)
-app.get('/api/workers/pending', routes.api.get.auth, routes.api.get.pendingWorkers)
+app.get('/api/workers', routes.api.auth, routes.api.get.workers)
+app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)
