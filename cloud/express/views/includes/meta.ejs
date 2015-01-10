@@ -1,0 +1,59 @@
+<%
+var title = ""
+var description = [
+	"Scandal. Intrigue. Secrets. Share the juicy details.",
+	"We’ll tell you what your friends are really like.",
+	"Share anonymously to as many or as little as you want."
+].join(" ")
+var visible = true
+
+if(template == "home/index") {
+	title = "EnjoyPnD - Powering Uber for X"
+}
+%>
+
+<!-- Base Meta Tags -->
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="utf-8">
+
+<!-- Favicon ICO -->
+<link rel="shortcut icon" href="<%= host %>/images/favicon.png?r=<%= random %>" />
+<link rel="icon" type="image/png" href="<%= host %>/images/logo.png?r=<%= random %>" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= host %>/images/logo.png?r=<%= random %>">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= host %>/images/logo.png?r=<%= random %>">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= host %>/images/logo.png?r=<%= random %>">
+
+<% if(visible) { %>
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="<%= url %>">
+	<meta property="og:image" content="<%= host %>/images/logo.png?r=<%= random %>">
+	<meta property="og:title" content="<%= title %>">
+	<meta property="og:description" content="<%= description %>">
+	<meta property="og:site_name" content="Juicy"/>
+
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="<%= title %>">
+	<meta itemprop="description" content="<%= description %>">
+	<meta itemprop="image" content="<%= host %>/images/logo.png?r=<%= random %>">
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:domain" content="<%= host %>">
+	<meta name="twitter:title" content="<%= title %>">
+	<meta name="twitter:description" content="<%= description %>">
+	<meta name="twitter:image:src" content="<%= host %>/images/logo.png?r=<%= random %>">
+
+	<!-- Robot Meta Tags -->
+	<meta name="robots" content="INDEX, FOLLOW">
+	<meta name="revisit-after" content="1 day">
+	<meta name="distribution" content="web">
+<% } else { %>
+
+	<!-- Robot Meta Tags -->
+	<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE">
+<% } %>
