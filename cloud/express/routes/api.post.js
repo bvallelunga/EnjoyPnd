@@ -1,25 +1,19 @@
-/*
-var applicants = Parse.pendingWorkers
 
-module.exports.interview = function(req, res) {
-  var query = new Parse.Query(Company
+var company = req.company
+var workers = company.relation("workers")
+var pendingWorkers = company.relation("pendingWorkers")
 
-
-*/
-
-company = req.company
-workers = company.relation("workers")
-pendingWorkers = company.relation("pendingWorkers")
-query = new Parse.Query(Parse.User)
-
+var query = new Parse.Query(Parse.User)
+//user? loop? look at all users? does it cycle through? for later implementation
 query.get(req.param("user"), function(user) {
   pendingWorkers.remove(user)
   
   if(req.param("accepted") == "true") {
     workers.add(user)
-  }
-  
+  }  
   company.save().then(function() {
     res.successT()
   }, res.errorT)
 })
+
+
