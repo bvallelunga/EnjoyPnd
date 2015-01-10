@@ -31,4 +31,4 @@ module.exports.auth = function(req, res, next) {
 }
 
 module.exports.get = require("cloud/express/routes/api.get.js")
-module.exports.get = require("cloud/express/routes/api.post.js")
+module.exports.post = require("cloud/express/routes/api.post.js")
