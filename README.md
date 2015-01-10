@@ -15,3 +15,10 @@ parse develop enjoypnd
 ```
 parse deploy
 ```
+
+# User Statuses
+
+1. Disabled
+2. Available
+3. Pending
+4. Working
