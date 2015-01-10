@@ -60,7 +60,7 @@ app.get('/', routes.core.home)
 
 // API
 app.get('/api/workers', routes.api.get.auth, routes.api.get.workers)
-app.get('/api/workers/pending', routes.api.get.auth, routes.api.get.workers)
+app.get('/api/workers/pending', routes.api.get.auth, routes.api.get.pendingWorkers)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)
