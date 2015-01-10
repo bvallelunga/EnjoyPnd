@@ -1,3 +1,5 @@
+var Jobs = Parse.Object.extend("Jobs")
+
 module.exports.pending = function(req, res) {
 var company = req.company
 var workers = company.relation("workers")

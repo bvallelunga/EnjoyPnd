@@ -17,6 +17,10 @@ canvas {
   opacity: 0.5;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   position: absolute;
   z-index: 2;

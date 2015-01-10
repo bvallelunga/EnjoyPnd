@@ -8,6 +8,7 @@ Parse.Cloud.useMasterKey()
 var routes = {
   core: require("cloud/express/routes/index.js"),
   api: require("cloud/express/routes/api.js"),
+  workers: require("cloud/express/routes/workers.js"),
 }
 
 // Global app configuration section
@@ -57,6 +58,12 @@ app.use(function(req, res, next) {
 app.get('/', routes.core.auth, routes.core.home)
 app.get('/logout', routes.core.logout)
 app.post('/login', routes.core.login)
+
+// Workers
+app.get('/worker/:user/invite', routes.core.auth, routes.workers.invited)
+app.get('/worker/:user/accept', routes.core.auth, routes.workers.accepted)
+app.get('/worker/:user/decline', routes.core.auth, routes.workers.declined)
+app.get('/worker/:user/drop', routes.core.auth, routes.workers.dropped)
 
 // API
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)

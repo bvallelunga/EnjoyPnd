@@ -2,7 +2,13 @@ var User = Parse.User
 
 module.exports.auth = function(req, res, next) {
   if(req.session.user) {
-		next();
+		var user = new User()
+    user.id = req.session.user
+
+    user.fetch().then(function() {
+      req.user = user
+      next()
+    })
 	} else if(req.xhr) {
 		res.errorT("Login required :(")
 	} else {
@@ -11,39 +17,49 @@ module.exports.auth = function(req, res, next) {
 }
 
 module.exports.home = function(req, res) {
-  var user = new User()
   var workers = []
   var pendingWorkers = []
+  var company = req.user.get("company")
 
-  user.id = req.session.user
+  company.fetch().then(function() {
+    var query = company.relation("workers").query()
 
-  user.fetch().then(function() {
-    var company = user.get("company")
+    return query.each(function(worker) {
+      var data = {
+        id: worker.id,
+        name: worker.get("name"),
+        status: worker.get("status")
+      }
 
-    company.fetch().then(function() {
-      var query = company.relation("workers").query()
+      if(worker.get("lastGeo")) {
+        var geo = worker.get("lastGeo")
+        data.lat = geo.latitude
+        data.lng = geo.longitude
+      }
 
-      return query.each(function(worker) {
-        workers.push({
-          id: worker.id,
-          name: worker.get("name"),
-          status: worker.get("status")
-        })
-      })
-    }).then(function() {
-      var query = company.relation("pendingWorkers").query()
+      workers.push(data)
+    })
+  }).then(function() {
+    var query = company.relation("pendingWorkers").query()
 
-      return query.each(function(worker) {
-        pendingWorkers.push({
-          id: worker.id,
-          name: worker.get("name")
-        })
-      })
-    }).then(function() {
-      res.renderT('home/index', {
-        workers: workers,
-        pendingWorkers: pendingWorkers
-      })
+    return query.each(function(worker) {
+      var data = {
+        id: worker.id,
+        name: worker.get("name")
+      }
+
+      if(worker.get("lastGeo")) {
+        var geo = worker.get("lastGeo")
+        data.lat = geo.latitude
+        data.lng = geo.longitude
+      }
+
+      pendingWorkers.push(data)
+    })
+  }).then(function() {
+    res.renderT('home/index', {
+      workers: workers,
+      pendingWorkers: pendingWorkers
     })
   })
 }

@@ -18,8 +18,8 @@
               case 4: status = "Working"; break
             }
           %>
-          <div class="status <%=: status | lower %>"><%= status %></div>
-          <div class="drop">Drop</div>
+          <div class="status <%= status.toLowerCase() %>"><%= status %></div>
+          <a class="drop" href="/worker/<%= worker.id %>/drop">Drop</a>
           <div class="clear"></div>
         </div>
       <% }) %>
@@ -31,8 +31,8 @@
      <% pendingWorkers.forEach(function(worker) { %>
         <div class="worker" data-id="<%= worker.id %>" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
           <div class="name"><%= worker.name %></div>
-          <div class="accept">Accept</div>
-          <div class="decline">Decline</div>
+          <a class="accept" href="/worker/<%= worker.id %>/accept">Accept</a>
+          <a class="decline" href="/worker/<%= worker.id %>/decline">Declined</a>
           <div class="clear"></div>
         </div>
       <% }) %>
