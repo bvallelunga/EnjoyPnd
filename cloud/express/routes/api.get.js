@@ -1,3 +1,5 @@
+var User = Parse.User
+
 module.exports.workers = function(req, res) {
   var company = req.company
   var query = company.relation("workers").query()
@@ -29,5 +31,20 @@ module.exports.pendingWorkers = function(req, res) {
     res.successT({
       workers: workers
     })
+  }, res.errorT)
+}
+
+module.exports.workerInfo = function(req, res) {
+  var id = req.param("id")
+  var query = new Parse.Query(User)
+
+  query.get(id).then(function(user) {
+    if(user) {
+      res.successT({
+
+      })
+    } else {
+      res.errorT("Invalid user id")
+    }
   }, res.errorT)
 }
