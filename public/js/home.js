@@ -1,9 +1,11 @@
 $(function() {
-  localLatLng(function(latLng) {
-    return setUpMap({
-      latLng: new google.maps.LatLng(latLng.latitude, latLng.longitude)
+  if($('.map').length > 0) {
+    localLatLng(function(latLng) {
+      return setUpMap({
+        latLng: new google.maps.LatLng(latLng.latitude, latLng.longitude)
+      })
     })
-  })
+  }
 })
 
 function localLatLng(cb) {

@@ -72,3 +72,60 @@ header.header .navigation .link.active,
 header.header .navigation .link:hover:active {
   opacity: 1;
 }
+
+.form .input {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: none;
+  border-left: solid 0 #61cdff;
+  border-bottom: solid 1px #ededed;
+  transition: border-left-width .2s ease 0;
+  outline: none;
+  color: #333;
+  display: block;
+}
+
+.form .input:not(.disabled):focus {
+  border-left-width: 10px;
+}
+
+.form .input.disabled {
+  background: #fafafa;
+}
+
+.form .input.textarea {
+  height: 150px;
+  resize: vertical;
+  margin: 0;
+}
+
+.form .button {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+  color: #2E97DE;
+  box-sizing: border-box;
+  font-size: 18px;
+  outline: none;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all .2s ease 0;
+}
+
+.form .button:hover {
+  background: #f7f7f7;
+}
+
+.form .button.error {
+  color: #B1100A;
+}
+
+.form .button.active,
+.form .button:hover:active {
+  background: #f1f1f1;
+}

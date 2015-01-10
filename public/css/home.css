@@ -8,7 +8,7 @@
   box-shadow: 0 5px 5px rgba(0,0,0,0.1);
   border: solid 1px #2995dd;
   border-radius: 4px;
-  min-height: 550px;
+  min-height: 400px;
 }
 
 .map {
@@ -33,6 +33,10 @@
 
 .block.border {
   border-right: solid 1px #ededed;
+}
+
+.block.borderLeft {
+  border-left: solid 1px #ededed;
 }
 
 .block .header {

@@ -1,0 +1,25 @@
+<% include ../includes/start.ejs %>
+<% include ../includes/header.ejs %>
+<div class="dashboard">
+  <div class="block">
+    <div class="header">My Account</div>
+    <form class="form" method="post" action="/account">
+      <input name="name" class="input" type="text" value="<%= user.name %>" placeholder="Name" required />
+      <input name="email" class="input" type="email" value="<%= user.email %>" placeholder="Email" required />
+      <textarea name="description" class="input textarea" placeholder="Description" required><%= user.description %></textarea>
+      <input class="button" type="submit" value="Update" />
+    </form>
+  </div>
+  <div class="block borderLeft">
+    <div class="header">Company Account</div>
+    <form class="form" method="post" action="/account/company">
+      <input name="name" class="input" type="text" value="<%= company.name %>" placeholder="Name" required />
+      <input name="webhook" class="input" type="url" value="<%= company.webhook %>" placeholder="Webhook" required />
+      <textarea name="description"  class="input textarea" placeholder="Description" required><%= company.description %></textarea>
+      <input class="input disabled" type="text" value="API Key: <%= company.apiKey %>" readonly />
+      <input class="input disabled" type="text" value="API Secret: <%= company.apiSecret %>" readonly />
+      <input class="button" type="submit" value="Update" />
+    </form>
+  </div>
+</div>
+<% include ../includes/end.ejs %>

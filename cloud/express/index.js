@@ -10,6 +10,7 @@ var routes = {
   api: require("cloud/express/routes/api.js"),
   workers: require("cloud/express/routes/workers.js"),
   jobs: require("cloud/express/routes/jobs.js"),
+  accounts: require("cloud/express/routes/accounts.js"),
 }
 
 // Global app configuration section
@@ -48,6 +49,7 @@ app.use(function(req, res, next) {
     data.host = req.protocol + "://" + req.host
     data.url = data.host + req.url
     data.template = data.template || template
+    data.user = data.user || req.session.user
     data.random = Math.random().toString(36).slice(2)
     res.render(template, data)
   }
@@ -55,11 +57,17 @@ app.use(function(req, res, next) {
   next()
 })
 
+
 // Landing
 app.get('/', routes.core.auth, routes.workers.home)
 app.get('/jobs', routes.core.auth, routes.jobs.home)
+app.get('/account', routes.core.auth, routes.accounts.home)
 app.get('/logout', routes.core.logout)
 app.post('/login', routes.core.login)
+
+//Accounts
+app.post('/account', routes.core.auth, routes.accounts.user)
+app.post('/account/company', routes.core.auth, routes.accounts.company)
 
 // Jobs
 app.get('/job/:job/cancel', routes.core.auth, routes.jobs.cancel)
@@ -73,8 +81,9 @@ app.get('/worker/:user/drop', routes.core.auth, routes.workers.dropped)
 // API
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)
 app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
-app.post('/api/jobs', routes.api.post.jobs)
-app.get('/api/jobstatus', routes.api.get.jobStatus)
+app.get('/api/job/status', routes.api.get.jobStatus)
+app.post('/api/job', routes.api.post.jobs)
+
 // Not Found Redirect
 app.all("*", routes.core.notfound)
 
