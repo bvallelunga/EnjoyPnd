@@ -1,4 +1,4 @@
-
+module.exports.interview = function(req, res) {
 var company = req.company
 var workers = company.relation("workers")
 var pendingWorkers = company.relation("pendingWorkers")
@@ -14,6 +14,42 @@ query.get(req.param("user"), function(user) {
   company.save().then(function() {
     res.successT()
   }, res.errorT)
-})
+})}
 
+module.exports.jobs = function(req, res) {
+  /*
+  name: String
+  pickup: {
+    lat: Float
+    lng: Float
+    address: String
+  }
+  destination: {
+    lat: Float
+    lng: Float
+    address: String
+  }
+  */
+  
+  var job = new Jobs()
+  var company = new Company()
+  company.id = req.param("company")
+  
+  var pickup = req.param('pickup')
+  var destination = req.param('destination')
+  
+  job.set("company", company)
+  job.set("destination", destination.address)
+  job.set("name", req.param("name"))
+  job.set("pickup", pickup.address)
+  job.set("pickupGeo", new Parse.GeoPoint(pickup.lat, pickup.lng))
+
+  if(!destination || !name || !pickup || !pickupGeo) {
+    res.errorT("Missing parameter(s)")
+  }
+  
+  job.save().then(function() {
+    res.successT()
+  }, res.errorT)
+}  
 
