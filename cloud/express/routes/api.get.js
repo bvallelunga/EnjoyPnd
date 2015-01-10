@@ -56,3 +56,17 @@ module.exports.workerInfo = function(req, res) {
     }
   }, res.errorT)
 }
+
+var Job = Parse.Object.extend("Jobs")
+
+module.exports.jobStatus = function(req, res) {
+  var company = req.company
+  
+  var query = new Parse.Query(Job)
+
+  query.get(req.param("job"), function(job) {
+    return job.status
+  }).then(function() {
+    res.successT()
+  }, res.errorT)
+}
