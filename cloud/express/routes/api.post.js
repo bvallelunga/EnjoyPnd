@@ -1,4 +1,4 @@
-
+module.exports.interview = function(req, res) {
 var company = req.company
 var workers = company.relation("workers")
 var pendingWorkers = company.relation("pendingWorkers")
@@ -14,6 +14,5 @@ query.get(req.param("user"), function(user) {
   company.save().then(function() {
     res.successT()
   }, res.errorT)
-})
-
+})}
 
