@@ -47,6 +47,7 @@
   box-sizing: border-box;
 }
 
+.workers .listing .worker.hover,
 .workers .listing .worker:hover {
   background: #fbfbfb;
 }
@@ -79,7 +80,6 @@
   float: left;
   width: 26.5%;
   color: #1AAF5E;
-  cursor: pointer;
 }
 
 .workers .listing .worker .accept:hover:active {
@@ -91,7 +91,6 @@
   float: left;
   width: 20%;
   color: #B1100A;
-  cursor: pointer;
 }
 
 .workers .listing .worker .drop:hover,

@@ -41,7 +41,7 @@ function setUpMap(options) {
   var geocoder = new google.maps.Geocoder()
   return geocoder.geocode(options, function(results, status) {
     var pin = {
-      url: "/images/search/pin.png",
+      url: "/images/pin.png",
       size: new google.maps.Size(50, 74),
       scaledSize: new google.maps.Size(25, 37),
       origin: new google.maps.Point(0, 0),
@@ -49,7 +49,7 @@ function setUpMap(options) {
     }
 
     var pin_hover = {
-      url: "/images/search/pin_hover.png",
+      url: "/images/pin_hover.png",
       size: new google.maps.Size(50, 74),
       scaledSize: new google.maps.Size(25, 37),
       origin: new google.maps.Point(0, 0),
@@ -85,7 +85,7 @@ function setUpMap(options) {
         }
       })(this))
 
-      marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: latLng,
         map: map,
         icon: pin
