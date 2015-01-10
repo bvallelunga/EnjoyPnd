@@ -29,5 +29,6 @@ parse deploy
 2. Accepted
 3. Enroute
 4. Declined
+5. Completed
 
 
