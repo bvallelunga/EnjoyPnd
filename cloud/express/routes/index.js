@@ -1,3 +1,5 @@
+var User = Parse.User
+
 module.exports.auth = function(req, res, next) {
   if(req.session.user) {
 		next();
@@ -9,7 +11,41 @@ module.exports.auth = function(req, res, next) {
 }
 
 module.exports.home = function(req, res) {
-  res.renderT('home/index')
+  var user = new User()
+  var workers = []
+  var pendingWorkers = []
+
+  user.id = req.session.user
+
+  user.fetch().then(function() {
+    var company = user.get("company")
+
+    company.fetch().then(function() {
+      var query = company.relation("workers").query()
+
+      return query.each(function(worker) {
+        workers.push({
+          id: worker.id,
+          name: worker.get("name"),
+          status: worker.get("status")
+        })
+      })
+    }).then(function() {
+      var query = company.relation("pendingWorkers").query()
+
+      return query.each(function(worker) {
+        pendingWorkers.push({
+          id: worker.id,
+          name: worker.get("name")
+        })
+      })
+    }).then(function() {
+      res.renderT('home/index', {
+        workers: workers,
+        pendingWorkers: pendingWorkers
+      })
+    })
+  })
 }
 
 module.exports.login = function(req, res) {

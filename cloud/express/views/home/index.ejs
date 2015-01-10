@@ -5,41 +5,37 @@
   <div class="workers first">
     <div class="header">Current Workers</div>
     <div class="listing">
-      <div class="worker">
-        <div class="name">Brian Vallelunga</div>
-        <div class="status">Disabled</div>
-        <div class="drop">Drop</div>
-        <div class="clear"></div>
-      </div>
-      <div class="worker">
-        <div class="name">Brian Vallelunga</div>
-        <div class="status available">Available</div>
-        <div class="drop">Drop</div>
-        <div class="clear"></div>
-      </div>
-      <div class="worker">
-        <div class="name">Brian Vallelunga</div>
-        <div class="status">Pending</div>
-        <div class="drop">Drop</div>
-        <div class="clear"></div>
-      </div>
-      <div class="worker">
-        <div class="name">Brian Vallelunga</div>
-        <div class="status working">Working</div>
-        <div class="drop">Drop</div>
-        <div class="clear"></div>
-      </div>
+      <% workers.forEach(function(worker) { %>
+        <div class="worker" data-id="<%= worker.id %>" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
+          <div class="name"><%= worker.name %></div>
+          <%
+            var status = ""
+
+            switch(worker.status) {
+              case 1: status = "Disabled"; break
+              case 2: status = "Available"; break
+              case 3: status = "Pending"; break
+              case 4: status = "Working"; break
+            }
+          %>
+          <div class="status <%=: status | lower %>"><%= status %></div>
+          <div class="drop">Drop</div>
+          <div class="clear"></div>
+        </div>
+      <% }) %>
     </div>
   </div>
   <div class="workers">
     <div class="header">Pending Workers</div>
     <div class="listing">
-      <div class="worker">
-        <div class="name">Brian Vallelunga</div>
-        <div class="status">Disabled</div>
-        <div class="drop">Drop</div>
-        <div class="clear"></div>
-      </div>
+     <% pendingWorkers.forEach(function(worker) { %>
+        <div class="worker" data-id="<%= worker.id %>" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
+          <div class="name"><%= worker.name %></div>
+          <div class="accept">Accept</div>
+          <div class="decline">Decline</div>
+          <div class="clear"></div>
+        </div>
+      <% }) %>
     </div>
   </div>
   <div class="clear"></div>

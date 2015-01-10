@@ -75,17 +75,32 @@
   color: #1AAF5E;
 }
 
-.workers .listing .worker .drop {
+.workers .listing .worker .accept {
+  float: left;
+  width: 26.5%;
+  color: #1AAF5E;
+  cursor: pointer;
+}
+
+.workers .listing .worker .accept:hover:active {
+  color: #179e53;
+}
+
+.workers .listing .worker .drop,
+.workers .listing .worker .decline {
   float: left;
   width: 20%;
   color: #B1100A;
   cursor: pointer;
 }
 
-.workers .listing .worker .drop:hover {
+.workers .listing .worker .drop:hover,
+.workers .listing .worker .decline:hover,
+.workers .listing .worker .accept:hover {
   text-decoration: underline;
 }
 
-.workers .listing .worker .drop:hover:active {
+.workers .listing .worker .drop:hover:active,
+.workers .listing .worker .decline:hover:active {
   color: #a6110c;
 }
