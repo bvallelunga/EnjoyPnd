@@ -1,4 +1,5 @@
 var Company = Parse.Object.extend("Company")
+var workerlist = Parse.Object.extend("workers")
 
 module.exports.auth = function(req, res, next) {
   var key = req.param("key")
@@ -62,3 +63,12 @@ module.exports.pendingWorkers = function(req, res) {
     })
   }, res.errorT)
 }}
+
+module.exports.workerinfo = function(req, res) {
+  var name = req.param("name")
+  Parse.Query("workers")
+  var single_worker = workerlist.find(name)
+  if (name) {
+    //Don't know what you want to do with this discovery
+  }
+}
