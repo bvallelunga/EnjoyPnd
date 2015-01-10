@@ -25,13 +25,13 @@ app.use(express.cookieSession({
   }
 }))
 app.use(function(req, res, next) {
-  req.successT = function(data) {
+  res.successT = function(data) {
     data = data || {}
     data.success = true
     res.json(data)
   }
 
-  req.errorT = function(error) {
+  res.errorT = function(error) {
     error.description = error.description || error
 
     res.json({
@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
     })
   }
 
-  req.renderT = function(template, data) {
+  res.renderT = function(template, data) {
     data = data || {}
     data.host = req.protocol + "://" + req.host
     data.url = data.host + req.url
@@ -57,7 +57,7 @@ app.use(function(req, res, next) {
 app.get('/', routes.core.home)
 
 // API
-app.get('/', routes.api.auth, routes.api.workers)
+app.get('/api/workers', routes.api.auth, routes.api.workers)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)

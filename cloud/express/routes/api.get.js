@@ -12,12 +12,19 @@ module.exports.auth = function(req, res, next) {
     })
   }
 
-  var query = Parse.Query(Company)
-
-  query.equalTo("key", key)
-  query.equalTo("secret", secret)
+  var query = new Parse.Query(Company)
+  query.equalTo("apiKey", key)
+  query.equalTo("apiSecret", secret)
 
   query.first().then(function(company) {
+    if(!company) {
+      return res.json({
+        success: false,
+        status: 0,
+        message: "Invalid api key & secret!"
+      })
+    }
+
     req.company = company
     next()
   }, res.errorT)
