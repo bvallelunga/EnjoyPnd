@@ -37,11 +37,18 @@ module.exports.pendingWorkers = function(req, res) {
 module.exports.workerInfo = function(req, res) {
   var id = req.param("id")
   var query = new Parse.Query(User)
-
   query.get(id).then(function(user) {
     if(user) {
       res.successT({
-
+        //begin informing others about this user 
+        var worker = { 
+        username: user.get("username")
+        company: user.get("company")
+        email: user.get("email")
+        name: user.get("name")
+        status: user.get("status")
+        }
+        // end
       })
     } else {
       res.errorT("Invalid user id")
