@@ -57,7 +57,7 @@ function setUpMap(options) {
     }
 
     var map = new google.maps.Map($('.map').get(0), {
-      zoom: 15,
+      zoom: 14,
       center: results[0].geometry.location,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
@@ -67,24 +67,10 @@ function setUpMap(options) {
       }
     })
 
-    $(".worker").each(function() {
+    $(".item").each(function() {
       var lat = parseFloat($(this).data("lat"))
       var ln = parseFloat($(this).data("lng"))
       var latLng = new google.maps.LatLng(lat, ln)
-
-      localLatLng((function(_this) {
-        return function(myLatLng) {
-          var distance = haversine({
-            latitude: lat,
-            longitude: ln
-          }, myLatLng, {
-            unit: 'mile'
-          })
-
-          return $(_this).find(".distance").text("" + (distance.toFixed(2)) + " miles away...")
-        }
-      })(this))
-
       var marker = new google.maps.Marker({
         position: latLng,
         map: map,

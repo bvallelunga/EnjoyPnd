@@ -16,54 +16,6 @@ module.exports.auth = function(req, res, next) {
 	}
 }
 
-module.exports.home = function(req, res) {
-  var workers = []
-  var pendingWorkers = []
-  var company = req.user.get("company")
-
-  company.fetch().then(function() {
-    var query = company.relation("workers").query()
-
-    return query.each(function(worker) {
-      var data = {
-        id: worker.id,
-        name: worker.get("name"),
-        status: worker.get("status")
-      }
-
-      if(worker.get("lastGeo")) {
-        var geo = worker.get("lastGeo")
-        data.lat = geo.latitude
-        data.lng = geo.longitude
-      }
-
-      workers.push(data)
-    })
-  }).then(function() {
-    var query = company.relation("pendingWorkers").query()
-
-    return query.each(function(worker) {
-      var data = {
-        id: worker.id,
-        name: worker.get("name")
-      }
-
-      if(worker.get("lastGeo")) {
-        var geo = worker.get("lastGeo")
-        data.lat = geo.latitude
-        data.lng = geo.longitude
-      }
-
-      pendingWorkers.push(data)
-    })
-  }).then(function() {
-    res.renderT('home/index', {
-      workers: workers,
-      pendingWorkers: pendingWorkers
-    })
-  })
-}
-
 module.exports.login = function(req, res) {
   Parse.User.logIn(
     req.param("email"), req.param("password")

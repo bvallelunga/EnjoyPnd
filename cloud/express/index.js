@@ -9,6 +9,7 @@ var routes = {
   core: require("cloud/express/routes/index.js"),
   api: require("cloud/express/routes/api.js"),
   workers: require("cloud/express/routes/workers.js"),
+  jobs: require("cloud/express/routes/jobs.js"),
 }
 
 // Global app configuration section
@@ -46,7 +47,7 @@ app.use(function(req, res, next) {
     data = data || {}
     data.host = req.protocol + "://" + req.host
     data.url = data.host + req.url
-    data.template = template
+    data.template = data.template || template
     data.random = Math.random().toString(36).slice(2)
     res.render(template, data)
   }
@@ -55,9 +56,13 @@ app.use(function(req, res, next) {
 })
 
 // Landing
-app.get('/', routes.core.auth, routes.core.home)
+app.get('/', routes.core.auth, routes.workers.home)
+app.get('/jobs', routes.core.auth, routes.jobs.home)
 app.get('/logout', routes.core.logout)
 app.post('/login', routes.core.login)
+
+// Jobs
+app.get('/job/:job/cancel', routes.core.auth, routes.jobs.cancel)
 
 // Workers
 app.get('/worker/:user/invite', routes.core.auth, routes.workers.invited)

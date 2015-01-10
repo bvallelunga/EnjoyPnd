@@ -2,11 +2,11 @@
 <% include ../includes/header.ejs %>
 <div class="dashboard">
   <div class="map"></div>
-  <div class="workers first">
+  <div class="block first">
     <div class="header">Current Workers</div>
     <div class="listing">
       <% workers.forEach(function(worker) { %>
-        <div class="worker" data-id="<%= worker.id %>" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
+        <div class="item" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
           <div class="name"><%= worker.name %></div>
           <%
             var status = ""
@@ -25,11 +25,11 @@
       <% }) %>
     </div>
   </div>
-  <div class="workers">
+  <div class="block">
     <div class="header">Pending Workers</div>
     <div class="listing">
      <% pendingWorkers.forEach(function(worker) { %>
-        <div class="worker" data-id="<%= worker.id %>" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
+        <div class="item" data-lat="<%= worker.lat %>" data-lng="<%= worker.lng %>">
           <div class="name"><%= worker.name %></div>
           <a class="accept" href="/worker/<%= worker.id %>/accept">Accept</a>
           <a class="decline" href="/worker/<%= worker.id %>/decline">Declined</a>

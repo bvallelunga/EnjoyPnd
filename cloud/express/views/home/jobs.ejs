@@ -1,0 +1,52 @@
+<% include ../includes/start.ejs %>
+<% include ../includes/header.ejs %>
+<div class="dashboard">
+  <div class="map"></div>
+  <div class="block border thirds">
+    <div class="header">Pending Jobs</div>
+    <div class="listing">
+      <% pendingJobs.forEach(function(job) { %>
+        <div class="item" data-lat="<%= job.lat %>" data-lng="<%= job.lng %>">
+          <div class="name long"><%= job.name %></div>
+          <a class="decline right" href="/job/<%= job.id %>/cancel">Cancel</a>
+          <div class="clear"></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="block border thirds">
+    <div class="header">Active Jobs</div>
+    <div class="listing">
+      <% activeJobs.forEach(function(job) { %>
+        <div class="item" data-lat="<%= job.lat %>" data-lng="<%= job.lng %>">
+          <div class="name long"><%= job.name %></div>
+          <a class="decline right" href="/job/<%= job.id %>/cancel">Cancel</a>
+          <div class="clear"></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="block thirds">
+    <div class="header">Completed Jobs</div>
+    <div class="listing">
+      <% completedJobs.forEach(function(job) { %>
+        <div class="item" data-lat="<%= job.lat %>" data-lng="<%= job.lng %>">
+          <div class="name long"><%= job.name %></div>
+          <%
+            var status = ""
+
+            switch(job.status) {
+              case 3: status = "Declined"; break
+              case 4: status = "Completed"; break
+              case 5: status = "Cancelled"; break
+            }
+          %>
+          <div class="status <%= status.toLowerCase() %> right"><%= status %></div>
+          <div class="clear"></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<% include ../includes/end.ejs %>
