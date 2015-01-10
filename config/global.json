@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "enjoypnd": {
+            "applicationId": "cJZxV4SMJNcriFmT5jQD4qY6tgQjo2Ci1WYN0IHc",
+            "masterKey": "3Ksyqlp2E2gzpbIq6Nlyz89M5dHdCALPzsXScQfJ"
+        },
+        "_default": {
+            "link": "EnjoyPnD"
+        }
+    },
+    "global": {
+        "parseVersion": "1.3.3"
+    }
+}
