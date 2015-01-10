@@ -32,6 +32,8 @@ app.use(function(req, res, next) {
   }
 
   req.errorT = function(error) {
+    error.description = error.description || error
+
     res.json({
       success: false,
       status: 1,
