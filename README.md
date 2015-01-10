@@ -26,10 +26,9 @@ parse deploy
 # Job Statuses
 
 1. Pending
-2. Accepted
-3. Enroute
-4. Declined
-5. Completed
-6. Cancelled
+2. Enroute
+3. Declined
+4. Completed
+5. Cancelled
 
 
