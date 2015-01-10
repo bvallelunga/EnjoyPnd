@@ -18,7 +18,7 @@ parse deploy
 
 # User Statuses
 
-1. Disabled
-2. Available
-3. Pending
-4. Working
+0. Disabled
+1. Available
+2. Pending
+3. Working
