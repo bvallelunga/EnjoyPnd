@@ -54,3 +54,18 @@ module.exports.jobs = function(req, res) {
     res.successT()
   }, res.errorT)
 }
+
+var Job = Parse.Object.extend("Jobs")
+
+module.exports.cancel = function(req, res) {
+  var company = req.company
+  
+  var query = new Parse.Query(Job)
+  query.get(req.param("job"), function(job) {
+      job.set("status", 5)
+  })
+  
+  job.save().then(function() {
+    res.successT()
+  }, res.errorT)
+}
