@@ -3,3 +3,6 @@ function randomRange(e,t){return Math.random()*(t-e)+e}function hexToR(e){return
 
 /* Auto Centering */
 !function(t){t.fn.vAlign=function(i){return this.each(function(){var s=t(this).height(),n=t(this).outerHeight(),h=(s+(n-s))/2;t(this).css("margin-top","-"+h+"px"),t(this).css("top","50%"),t(this).css("position",i?i:"absolute")})}}(jQuery),function(t){t.fn.hAlign=function(i){return this.each(function(){var s=t(this).width(),n=t(this).outerWidth(),h=(s+(n-s))/2;t(this).css("margin-left","-"+h+"px"),t(this).css("left","50%"),t(this).css("position",i?i:"absolute")})}}(jQuery);
+
+/* Activate Auto Centering */
+$(function(t){$(".center.hAlign").hAlign();$(".center.vAlign").vAlign();})

@@ -17,17 +17,53 @@ canvas {
   opacity: 0.5;
 }
 
-header.header {
-  max-width: 1200px;
-  margin: 50px auto 20px auto;
-  position: relative;
+.container {
+  position: absolute;
   z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+header.header {
+  width: 800px;
+  margin: 50px auto 10px;
 }
 
 header.header .logo {
-  color: #fff;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 34px;
   text-decoration: none;
-  font-weight: 400px;
+  color: #fff;
+  font-family: 'Ubuntu';
+  font-size: 26px;
+  font-weight: 500;
+  float: left;
+}
+
+header.header .navigation {
+  float: right;
+}
+
+header.header .navigation .link {
+  float: left;
+  margin: 10px 0 0 20px;
+  color: #fff;
+  opacity: 0.6;
+  transition: opacity .2s ease 0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+header.header .navigation .link:hover {
+  opacity: 0.8;
+}
+
+header.header .navigation .link:hover:active {
+  opacity: 1;
 }

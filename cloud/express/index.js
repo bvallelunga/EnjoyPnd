@@ -32,12 +32,12 @@ app.use(function(req, res, next) {
   }
 
   res.errorT = function(error) {
-    error.description = error.description || error
+    error = error.description || error
 
     res.json({
       success: false,
       status: 1,
-      message: error.description
+      message: error
     })
   }
 
@@ -54,7 +54,9 @@ app.use(function(req, res, next) {
 })
 
 // Landing
-app.get('/', routes.core.home)
+app.get('/', routes.core.auth, routes.core.home)
+app.get('/logout', routes.core.logout)
+app.post('/login', routes.core.login)
 
 // API
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)
