@@ -8,7 +8,8 @@ module.exports.workers = function(req, res) {
   query.each(function(worker) {
     workers.push({
       name: worker.get("name"),
-      description: worker.get("description")
+      description: worker.get("description"),
+      lastGeo: worker.get("lastGeo").toJSON
     })
   }).then(function() {
     res.successT({
