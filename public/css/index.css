@@ -14,4 +14,20 @@ canvas {
   right: 0;
   bottom: 0;
   z-index: 1;
+  opacity: 0.5;
+}
+
+header.header {
+  max-width: 1200px;
+  margin: 50px auto 20px auto;
+  position: relative;
+  z-index: 2;
+}
+
+header.header .logo {
+  color: #fff;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 34px;
+  text-decoration: none;
+  font-weight: 400px;
 }
