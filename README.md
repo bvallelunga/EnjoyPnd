@@ -30,5 +30,6 @@ parse deploy
 3. Enroute
 4. Declined
 5. Completed
+6. Cancelled
 
 
