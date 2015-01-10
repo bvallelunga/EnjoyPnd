@@ -6,7 +6,8 @@ Parse.Cloud.useMasterKey()
 
 // Routes
 var routes = {
-  core: require("cloud/express/routes/index")
+  core: require("cloud/express/routes/index"),
+  api: require("cloud/express/routes/api")
 }
 
 // Global app configuration section
@@ -21,10 +22,13 @@ app.use(express.cookieSession({
       httpOnly: true
   }
 }))
-app.use(routes.core.render)
+app.use(routes.core.extend)
 
 // Landing
 app.get('/', routes.core.home)
+
+// API
+app.get('/', routes.api.auth, routes.api.workers)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)

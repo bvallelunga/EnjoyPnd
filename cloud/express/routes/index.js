@@ -6,7 +6,21 @@ module.exports.notfound = function(req, res) {
   res.redirect("/")
 }
 
-module.exports.render = function(req, res, next) {
+module.exports.extend = function(req, res, next) {
+  res.successT = function(data) {
+    data = data || {}
+    data.success = true
+    res.json(data)
+  }
+
+  res.errorT = function(error) {
+    res.json({
+      success: false,
+      status: 1,
+      message: error.description
+    })
+  }
+
   res.renderT = function(template, data) {
     data = data || {}
     data.host = req.protocol + "://" + req.host
