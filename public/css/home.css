@@ -27,7 +27,7 @@
 .block.thirds {
   width: 33.33%;
   float: left;
-  min-height: 250px;
+  min-height: 200px;
   box-sizing: border-box;
 }
 
