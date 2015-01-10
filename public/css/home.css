@@ -2,11 +2,90 @@
   background: #fff;
   width: 840px;
   margin: 0 auto 20px auto;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
   box-shadow: 0 5px 5px rgba(0,0,0,0.1);
   border: solid 1px #2995dd;
   border-radius: 4px;
   min-height: 550px;
+}
+
+.map {
+  width: 100%;
+  height: 350px;
+  border-radius: 4px;
+}
+
+.workers {
+  width: 50%;
+  float: left;
+  min-height: 250px;
+  box-sizing: border-box;
+}
+
+.workers.first {
+  border-right: solid 1px #ededed;
+}
+
+.workers .header {
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  background: #fafafa;
+  border-top: solid 1px #ededed;
+  border-bottom: solid 1px #ededed;
+}
+
+.workers .listing .worker {
+  padding: 14px 12px;
+  border-bottom: solid 1px #f5f5f5;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.workers .listing .worker:hover {
+  background: #fbfbfb;
+}
+
+.workers .listing .worker:last-child {
+  border: none;
+}
+
+.workers .listing .worker .name {
+  float: left;
+  font-weight: bold;
+  width: 52.5%;
+}
+
+.workers .listing .worker .status {
+  float: left;
+  width: 26.5%;
+  color: #666;
+}
+
+.workers .listing .worker .status.available {
+  color: #2E97DE;
+}
+
+.workers .listing .worker .status.working {
+  color: #1AAF5E;
+}
+
+.workers .listing .worker .drop {
+  float: left;
+  width: 20%;
+  color: #B1100A;
+  cursor: pointer;
+}
+
+.workers .listing .worker .drop:hover {
+  text-decoration: underline;
+}
+
+.workers .listing .worker .drop:hover:active {
+  color: #a6110c;
 }

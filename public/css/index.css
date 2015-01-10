@@ -61,7 +61,7 @@ header.header .navigation .link {
 }
 
 header.header .navigation .link:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 header.header .navigation .link:hover:active {

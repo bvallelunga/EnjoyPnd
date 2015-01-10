@@ -3,6 +3,7 @@
 <script type="text/javascript" src="/js/index.js?r=<%= random %>"></script>
 
 <% if(template == "home/index") { %>
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&geometry&sensor=false&v=3"></script>
 	<script type="text/javascript" src="/js/home.js?r=<%= random %>"></script>
 <% } else if(template == "home/login") { %>
 	<script type="text/javascript" src="/js/login.js?r=<%= random %>"></script>
