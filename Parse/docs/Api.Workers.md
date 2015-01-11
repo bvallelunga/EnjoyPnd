@@ -19,6 +19,20 @@ GET /api/workers/
 }
 ```
 
+**Returns**
+```
+{
+  
+  success: true
+  workers: [{
+    id: String
+    name: String
+    email: String
+  }]
+
+}
+```
+
 ## Worker Pending
 
 Adds workers of a company to be pending for a job.
@@ -30,7 +44,6 @@ GET /api/workers/pending
 **Parameters**
 
 ```
-
 {
   
   // Company Identification
@@ -40,6 +53,20 @@ GET /api/workers/pending
   // API Parameters
   worker: String 
   
+}
+```
+
+**Returns**
+```
+{
+  
+  success: true
+  workers: [{
+    id: String
+    name: String
+    email: String
+  }]
+
 }
 ```
 
@@ -55,7 +82,6 @@ GET /api/:worker/info
 **Parameters**
 
 ```
-
 {
   
   // Company Identification
@@ -65,6 +91,20 @@ GET /api/:worker/info
   // API Parameters
   worker: String
   
+}
+```
+
+**Returns**
+```
+{
+  
+  success: true
+  worker: {
+    id: String
+    name: String
+    email: String
+  }
+
 }
 ```
 
@@ -80,7 +120,6 @@ POST /api/:worker/pending
 **Parameters**
 
 ```
-
 {
   
   // Company Indentification
@@ -90,5 +129,14 @@ POST /api/:worker/pending
   // API Parameters
   worker: String
   
+}
+```
+
+**Returns**
+```
+{
+  
+  success: true
+
 }
 ```
