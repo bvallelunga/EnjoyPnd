@@ -1,4 +1,5 @@
 var Jobs = Parse.Object.extend("Jobs")
+var Company = Parse.Object.extend("Company")
 
 module.exports.pending = function(req, res) {
 var company = req.company
@@ -43,11 +44,12 @@ module.exports.jobs = function(req, res) {
   job.set("company", company)
   job.set("destination", destination.address)
   job.set("name", req.param("name"))
+  job.set("status", 1)
   job.set("pickup", pickup.address)
-  job.set("pickupGeo", new Parse.GeoPoint(pickup.lat, pickup.lng))
+  job.set("pickupGeo", new Parse.GeoPoint(parseFloat(pickup.lat), parseFloat( pickup.lng)))
 
-  if(!destination || !name || !pickup || !pickupGeo) {
-    res.errorT("Missing parameter(s)")
+  if(!destination || !pickup || req.param("name") == null) {
+    return res.errorT("Missing parameter(s)")
   }
 
   job.save().then(function() {
@@ -55,17 +57,15 @@ module.exports.jobs = function(req, res) {
   }, res.errorT)
 }
 
-var Job = Parse.Object.extend("Jobs")
 
-module.exports.cancel = function(req, res) {
-  var company = req.company
-  
-  var query = new Parse.Query(Job)
-  query.get(req.param("job"), function(job) {
+module.exports.cancel = function(req, res) {  
+  var job = req.param("job")
+  var query = new Parse.Query(Jobs)
+
+  query.get(job, function(job) {
       job.set("status", 5)
-  })
-  
-  job.save().then(function() {
+      return job.save()
+  }).then(function() {
     res.successT()
   }, res.errorT)
 }

@@ -3,7 +3,7 @@ Parse.Cloud.define("jobs.cancelled", function(req, res) {
   var webhook = company.get("webhook")
 
   if(!webhook) {
-    return res.success()
+    return res.successT()
   }
 
   Parse.Cloud.httpRequest({
@@ -17,6 +17,6 @@ Parse.Cloud.define("jobs.cancelled", function(req, res) {
   }).then(function(response) {
     res.success()
   }, function(error) {
-    res.error(error)
+    res.errorT(error)
   })
 })
