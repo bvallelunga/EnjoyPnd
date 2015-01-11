@@ -27,9 +27,6 @@ class HomeController: UIViewController {
         if(User.current() != nil) {
             self.performSegueWithIdentifier("loggedInSegue", sender: self)
         }
-        
-        // Configure Design
-        self.view.backgroundColor = UIColor(red:0.18, green:0.59, blue:0.87, alpha:1)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -62,4 +62,10 @@ class User {
     func logout() {
         PFUser.logOut()
     }
+    
+    func setInfo(name: String, description: String) {
+        self.parse["name"] = name
+        self.parse["description"] = description
+        self.parse.saveInBackgroundWithBlock(nil)
+    }
 }
