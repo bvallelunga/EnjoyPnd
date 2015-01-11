@@ -1,5 +1,5 @@
 //
-//  CompaniesTableController.swift
+//  PendingCompaniesTableController.swift
 //  EnjoyPnD
 //
 //  Created by Brian Vallelunga on 1/10/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompaniesTableController: UITableViewController {
+class PendingCompaniesTableController: UITableViewController {
     
     // MARK: Instance Variables
     private var user: User = User.current()
@@ -40,17 +40,15 @@ class CompaniesTableController: UITableViewController {
     }
     
     // MARK: IBActions
-    @IBAction func mapSegue(sender: UIBarButtonItem) {
-        if(self.user.selectedCompanies.count != 0) {
-            self.performSegueWithIdentifier("mapSegue", sender: self)
-        }
+    @IBAction func cancelApply(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: Instance Methods
     func reloadCompanies() {
-        self.user.getCompanies { (companies) -> Void in
+        self.user.getPendingCompanies { (companies) -> Void in
             if !companies.isEmpty {
-                self.title = "Companies"
+                self.title = "Apply to Companies"
             } else {
                 self.title = "No Companies Found"
             }
@@ -82,10 +80,10 @@ class CompaniesTableController: UITableViewController {
         
         if(cell.accessoryType == UITableViewCellAccessoryType.None) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            company.addWorker(self.user)
+            company.addPendingWorker(self.user)
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
-            company.removeWorker(self.user)
+            company.removePendingWorker(self.user)
         }
     }
     
@@ -101,7 +99,7 @@ class CompaniesTableController: UITableViewController {
             cell.detailTextLabel?.font = UIFont.systemFontOfSize(16)
             cell.detailTextLabel?.numberOfLines = 3
             
-            if(self.user.selectedCompanies.containsObject(company.parse.objectId)) {
+            if(self.user.pendingCompanies.containsObject(company.parse.objectId)) {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             } else {
                 cell.accessoryType = UITableViewCellAccessoryType.None

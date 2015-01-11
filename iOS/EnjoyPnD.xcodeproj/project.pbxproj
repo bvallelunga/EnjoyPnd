@@ -36,10 +36,14 @@
 		D306B1441A61E5480039A158 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B1431A61E5480039A158 /* HomeController.swift */; };
 		D3AC9ADD1A62042B000A0A76 /* AddInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */; };
 		D3AC9ADF1A620E69000A0A76 /* CompaniesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC9ADE1A620E69000A0A76 /* CompaniesTableController.swift */; };
+		D3AC9AE11A621150000A0A76 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC9AE01A621150000A0A76 /* Company.swift */; };
+		D3AC9AE71A621715000A0A76 /* PendingCompaniesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC9AE61A621715000A0A76 /* PendingCompaniesTableController.swift */; };
 		D3C0F4451A61EB860092F126 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4441A61EB860092F126 /* User.swift */; };
 		D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */; };
 		D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4481A61EE350092F126 /* LoginViewController.swift */; };
 		D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */; };
+		D3CD0DF41A6224F600B8D54D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD0DF31A6224F600B8D54D /* MapViewController.swift */; };
+		D3CD0DF71A6227BE00B8D54D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CD0DF61A6227BE00B8D54D /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,10 +91,14 @@
 		D306B1431A61E5480039A158 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInfoController.swift; sourceTree = "<group>"; };
 		D3AC9ADE1A620E69000A0A76 /* CompaniesTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesTableController.swift; sourceTree = "<group>"; };
+		D3AC9AE01A621150000A0A76 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		D3AC9AE61A621715000A0A76 /* PendingCompaniesTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingCompaniesTableController.swift; sourceTree = "<group>"; };
 		D3C0F4441A61EB860092F126 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAnimationSegue.swift; sourceTree = "<group>"; };
 		D3C0F4481A61EE350092F126 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3CD0DF31A6224F600B8D54D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D3CD0DF61A6227BE00B8D54D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CD0DF71A6227BE00B8D54D /* MapKit.framework in Frameworks */,
 				D306B1421A61E30C0039A158 /* AudioToolbox.framework in Frameworks */,
 				D306B1291A61E1810039A158 /* QuartzCore.framework in Frameworks */,
 				D306B12A1A61E1810039A158 /* MobileCoreServices.framework in Frameworks */,
@@ -205,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				D3C0F4441A61EB860092F126 /* User.swift */,
+				D3AC9AE01A621150000A0A76 /* Company.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -212,11 +222,11 @@
 		D306B0FE1A61E00E0039A158 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D306B1431A61E5480039A158 /* HomeController.swift */,
-				D3C0F4481A61EE350092F126 /* LoginViewController.swift */,
-				D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */,
-				D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */,
-				D3AC9ADE1A620E69000A0A76 /* CompaniesTableController.swift */,
+				D3AC9AE21A621642000A0A76 /* Home */,
+				D3AC9AE31A62164B000A0A76 /* Login */,
+				D3AC9AE41A621650000A0A76 /* Register */,
+				D3AC9AE51A621659000A0A76 /* Company Lists */,
+				D3CD0DF51A6224FC00B8D54D /* Map */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +241,7 @@
 		D306B1281A61E1660039A158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3CD0DF61A6227BE00B8D54D /* MapKit.framework */,
 				D306B1411A61E30C0039A158 /* AudioToolbox.framework */,
 				D306B1261A61E1590039A158 /* QuartzCore.framework */,
 				D306B1241A61E14E0039A158 /* MobileCoreServices.framework */,
@@ -254,6 +265,48 @@
 				D306B1021A61E0780039A158 /* ParseCrashReporting.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3AC9AE21A621642000A0A76 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D306B1431A61E5480039A158 /* HomeController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		D3AC9AE31A62164B000A0A76 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3C0F4481A61EE350092F126 /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		D3AC9AE41A621650000A0A76 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */,
+				D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		D3AC9AE51A621659000A0A76 /* Company Lists */ = {
+			isa = PBXGroup;
+			children = (
+				D3AC9ADE1A620E69000A0A76 /* CompaniesTableController.swift */,
+				D3AC9AE61A621715000A0A76 /* PendingCompaniesTableController.swift */,
+			);
+			name = "Company Lists";
+			sourceTree = "<group>";
+		};
+		D3CD0DF51A6224FC00B8D54D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D3CD0DF31A6224F600B8D54D /* MapViewController.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,11 +410,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CD0DF41A6224F600B8D54D /* MapViewController.swift in Sources */,
 				D306B1441A61E5480039A158 /* HomeController.swift in Sources */,
 				D306B0DB1A61D3E00039A158 /* AppDelegate.swift in Sources */,
+				D3AC9AE11A621150000A0A76 /* Company.swift in Sources */,
 				D3C0F4451A61EB860092F126 /* User.swift in Sources */,
 				D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */,
 				D3AC9ADF1A620E69000A0A76 /* CompaniesTableController.swift in Sources */,
+				D3AC9AE71A621715000A0A76 /* PendingCompaniesTableController.swift in Sources */,
 				D3AC9ADD1A62042B000A0A76 /* AddInfoController.swift in Sources */,
 				D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */,
 				D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */,
@@ -490,7 +546,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = EnjoyPnD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -513,7 +569,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = EnjoyPnD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="De5-Rk-6kB">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -199,7 +198,6 @@
         <!--Register View Controller-->
         <scene sceneID="hvp-Ix-5UD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O8s-jh-4DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="XEQ-bD-Xcp" customClass="RegisterViewController" customModule="EnjoyPnD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nkP-22-YY5"/>
@@ -278,6 +276,7 @@
                         <segue destination="BjV-HK-nZ1" kind="custom" identifier="addInfoSegue" customClass="NoAnimationSegue" id="gxB-5h-KfS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8s-jh-4DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="642" y="1079"/>
         </scene>
@@ -355,7 +354,7 @@
             </objects>
             <point key="canvasLocation" x="1090" y="1079"/>
         </scene>
-        <!--Select Companies-->
+        <!--Companies-->
         <scene sceneID="V7r-od-xrw">
             <objects>
                 <tableViewController id="Iha-7j-0Za" customClass="CompaniesTableController" customModule="EnjoyPnD" customModuleProvider="target" sceneMemberID="viewController">
@@ -376,22 +375,129 @@
                             <outlet property="delegate" destination="Iha-7j-0Za" id="qIc-ZS-E98"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Companies" id="Q1a-rM-AaX">
+                    <navigationItem key="navigationItem" title="Companies" id="Q1a-rM-AaX">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="BNe-7N-Ap3">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelRegister:" destination="XEQ-bD-Xcp" id="koy-HW-LP3"/>
+                                <segue destination="y3p-nl-8MC" kind="modal" id="v4s-4n-cYH"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ecT-z2-KpL">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="ecT-z2-KpL">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="mapSegue:" destination="Iha-7j-0Za" id="eZ0-bk-ijN"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="0HF-xY-i1H" kind="custom" identifier="mapSegue" customClass="NoAnimationSegue" id="Bt3-0H-n0I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nD-Rg-dxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1528" y="361"/>
+        </scene>
+        <!--EnjoyPnD-->
+        <scene sceneID="64m-wY-KWf">
+            <objects>
+                <viewController id="0HF-xY-i1H" customClass="MapViewController" customModule="EnjoyPnD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mji-5c-Y1S"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vma-lT-E0p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1bt-RS-C5M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-7E-yoF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5qQ-7E-yoF" firstAttribute="leading" secondItem="1bt-RS-C5M" secondAttribute="leadingMargin" constant="-16" id="Dx9-0x-NHc"/>
+                            <constraint firstItem="5qQ-7E-yoF" firstAttribute="top" secondItem="1bt-RS-C5M" secondAttribute="topMargin" id="EVm-sr-JTf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5qQ-7E-yoF" secondAttribute="trailing" constant="-16" id="R4w-a4-hRz"/>
+                            <constraint firstItem="Vma-lT-E0p" firstAttribute="top" secondItem="5qQ-7E-yoF" secondAttribute="bottom" id="UFt-nK-PaQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="EnjoyPnD" id="RNi-py-Thd">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="an8-0P-0ty">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="logoutUser:" destination="0HF-xY-i1H" id="90l-it-XdR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="psX-w2-Ueo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addCompanies:" destination="0HF-xY-i1H" id="aab-w3-J2o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="mapView" destination="5qQ-7E-yoF" id="iGl-Kk-gf2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jg1-r2-Klp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="361"/>
+        </scene>
+        <!--Apply to Companies-->
+        <scene sceneID="7Vs-IL-Q7S">
+            <objects>
+                <tableViewController id="iHc-qe-MI2" customClass="PendingCompaniesTableController" customModule="EnjoyPnD" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FWc-b6-Cs9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2u0-S1-TW1">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2u0-S1-TW1" id="TH6-fu-C1j">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iHc-qe-MI2" id="hQK-Zv-IjX"/>
+                            <outlet property="delegate" destination="iHc-qe-MI2" id="sI3-Nh-gfC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Apply to Companies" id="5U3-kf-Q3B">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Bh7-B3-SNA">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelApply:" destination="iHc-qe-MI2" id="YFo-DV-6Vr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRN-pr-xet" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="-353"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BMX-Xl-Gu9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y3p-nl-8MC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ImL-Jn-7Li">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iHc-qe-MI2" kind="relationship" relationship="rootViewController" id="9ht-js-bEO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qV6-cR-g1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="-353"/>
         </scene>
     </scenes>
     <resources>

@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Brian Vallelunga. All rights reserved.
 //
 
+private var selectCompanies: NSMutableArray = NSMutableArray()
+private var pendCompanies: NSMutableArray = NSMutableArray()
+
 class User {
     
     // MARK: Instance Variables
@@ -13,6 +16,8 @@ class User {
     var name: String!
     var email: String!
     var description: String!
+    var selectedCompanies: NSMutableArray = selectCompanies
+    var pendingCompanies: NSMutableArray = pendCompanies
     var parse: PFUser!
     
     // MARK: Convenience Methods
@@ -67,5 +72,43 @@ class User {
         self.parse["name"] = name
         self.parse["description"] = description
         self.parse.saveInBackgroundWithBlock(nil)
+    }
+    
+    func getCompanies(callback: ((companies: [Company]) -> Void)) {
+        var companies: [Company] = []
+        var query = PFQuery(className: "Company")
+        
+        query.whereKey("workers", equalTo: self.parse)
+        
+        query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects as [PFObject] {
+                    companies.append(Company(object))
+                }
+                
+                callback(companies: companies)
+            } else if error != nil {
+                println(error)
+            }
+        })
+    }
+    
+    func getPendingCompanies(callback: ((companies: [Company]) -> Void)) {
+        var companies: [Company] = []
+        var query = PFQuery(className: "Company")
+        
+        query.whereKey("workers", notEqualTo: self.parse)
+        
+        query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects as [PFObject] {
+                    companies.append(Company(object))
+                }
+                
+                callback(companies: companies)
+            } else if error != nil {
+                println(error)
+            }
+        })
     }
 }
