@@ -45,7 +45,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = kCLDistanceFilterNone
-        self.locationManager.activityType = CLActivityType.AutomotiveNavigation
+        self.locationManager.activityType = CLActivityType.Fitness
         
         if (self.locationManager.respondsToSelector(Selector("requestAlwaysAuthorization"))) {
             self.locationManager.requestAlwaysAuthorization()
