@@ -1,5 +1,6 @@
 var User = Parse.User
 var Jobs = Parse.Object.extend("Jobs")
+var Company = Parse.Object.extend("Company")
 
 module.exports.workers = function(req, res) {
   var company = req.company
@@ -57,10 +58,11 @@ module.exports.workerInfo = function(req, res) {
 }
 
 module.exports.jobStatus = function(req, res) {
-  var company = req.company
+  var job = new Jobs() 
+  job.id = req.param("job")
   var query = new Parse.Query(Jobs)
 
-  query.get(req.param("job"), function(job) {
+  query.get(job.id, function(job) {
     res.successT({
       status: job.get("status")
     })

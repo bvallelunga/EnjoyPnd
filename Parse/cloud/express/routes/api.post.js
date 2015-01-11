@@ -1,16 +1,17 @@
 var Jobs = Parse.Object.extend("Jobs")
 var Company = Parse.Object.extend("Company")
-
+var User = Parse.Object.extend("User")
 
 module.exports.pending = function(req, res) {
-  var company = req.company
+  var company = new Company()
+  company.id = req.param("company")
   var workers = company.relation("workers")
   var pendingWorkers = company.relation("pendingWorkers")
-  var query = new Parse.Query(Parse.User)
+  var query = new Parse.Query(User)
+  var user = req.param("user")
 
-  query.get(req.param("user"), function(user) {
+  query.get(user, function(user) {
     pendingWorkers.remove(user)
-
     if(req.param("accepted") == "true") {
       workers.add(user)
     }
