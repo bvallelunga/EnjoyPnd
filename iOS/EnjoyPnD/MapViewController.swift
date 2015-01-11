@@ -176,6 +176,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             })
         } else {
             self.mapView.removeAnnotation(self.annotation)
+            self.user.setStatus(2)
             self.job.setStatus(3)
             self.hidePopView()
         }
@@ -184,6 +185,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: Instance Methods
     func showPopView(job: Job) {
         job.getCompany { (company) -> Void in
+            self.user.setStatus(3)
+            
             if(self.ballView != nil) {
                 self.ballView.removeFromSuperview()
             }
