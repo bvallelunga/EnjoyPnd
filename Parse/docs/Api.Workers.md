@@ -8,28 +8,24 @@ GET /api/workers/
 **Parameters**
 ```
 {
-  
   // Company Identification
   key: String
   secret: String
   
   // API Parameters
   company: String
-
 }
 ```
 
 **Returns**
 ```
 {
-  
   success: true
   workers: [{
     id: String
     name: String
     email: String
   }]
-
 }
 ```
 
@@ -44,29 +40,25 @@ GET /api/workers/pending
 **Parameters**
 
 ```
-{
-  
+{ 
   // Company Identification
   key: String
   secret: String
   
   // API Parameters
   worker: String 
-  
 }
 ```
 
 **Returns**
 ```
 {
-  
   success: true
   workers: [{
     id: String
     name: String
     email: String
   }]
-
 }
 ```
 
@@ -83,28 +75,24 @@ GET /api/:worker/info
 
 ```
 {
-  
   // Company Identification
   key: String
   secret: String
   
   // API Parameters
   worker: String
-  
 }
 ```
 
 **Returns**
 ```
 {
-  
   success: true
   worker: {
     id: String
     name: String
     email: String
   }
-
 }
 ```
 
@@ -121,22 +109,18 @@ POST /api/:worker/pending
 
 ```
 {
-  
   // Company Indentification
   key: String
   secret: String
   
   // API Parameters
   worker: String
-  
 }
 ```
 
 **Returns**
 ```
 {
-  
   success: true
-
 }
 ```
