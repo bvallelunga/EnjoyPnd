@@ -102,6 +102,7 @@ GET /api/:job/status
 {
   status: Float
   success: Boolean
-
 }
-'''
+```
+
+
