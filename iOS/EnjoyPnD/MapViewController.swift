@@ -25,6 +25,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private var job: Job!
     private var locationManager: CLLocationManager!
     private var ballView: BallView!
+    private var annotation: MKPointAnnotation!
     private var popupConstraint: NSLayoutConstraint!
     private let duration: NSTimeInterval = NSTimeInterval(0.2)
     private let regularColor = UIColor(red:0.18, green:0.59, blue:0.87, alpha:1)
@@ -43,7 +44,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = kCLDistanceFilterNone
-        self.locationManager.activityType = .Fitness
+        self.locationManager.activityType = CLActivityType.AutomotiveNavigation
         
         if (self.locationManager.respondsToSelector(Selector("requestAlwaysAuthorization"))) {
             self.locationManager.requestAlwaysAuthorization()
@@ -100,6 +101,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let region = MKCoordinateRegionMakeWithDistance(firstLocation.coordinate, 1000, 1000)
             self.mapView.setCenterCoordinate(firstLocation.coordinate, animated: true)
             self.mapView.setRegion(region, animated: true)
+            self.user.setGeo(PFGeoPoint(location: firstLocation))
             
             var geoCoder = CLGeocoder()
             geoCoder.reverseGeocodeLocation(locations.last as CLLocation, completionHandler: { (placeMarks: [AnyObject]!, error: NSError!) -> Void in
@@ -131,7 +133,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         var pickup = self.job.pickup.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
         var destination = self.job.destination.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        var url = NSURL(string: "http://maps.apple.com/maps?saddr=\(pickup)&daddr=\(destination)")        
+        var url = NSURL(string: "http://maps.apple.com/maps?saddr=\(pickup)&daddr=\(destination)")
         UIApplication.sharedApplication().openURL(url!)
     }
     
@@ -172,6 +174,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 self.popMaps.alpha = 1
             })
         } else {
+            self.mapView.removeAnnotation(self.annotation)
             self.job.setStatus(3)
             self.hidePopView()
         }
@@ -187,6 +190,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.popView.backgroundColor = self.regularColor
             self.popName.text = company.name
             self.popDescription.text = job.name
+            
+            // Add an annotation
+            var lat = CLLocationDegrees(job.pickupGeo.latitude)
+            var lng = CLLocationDegrees(job.pickupGeo.longitude)
+            
+            if(self.annotation != nil) {
+                self.mapView.removeAnnotation(self.annotation)
+            }
+            
+            self.annotation = MKPointAnnotation()
+            self.annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            self.annotation.title = "Pickup Location"
+            self.annotation.subtitle = company.name
+            self.mapView.addAnnotation(self.annotation)
+            self.mapView.selectAnnotation(self.annotation, animated: true)
             
             self.popupConstraint = NSLayoutConstraint(item: self.popView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
             self.view.addConstraint(self.popupConstraint)

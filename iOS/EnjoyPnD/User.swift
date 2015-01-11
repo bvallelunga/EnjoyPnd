@@ -17,6 +17,7 @@ class User {
     var email: String!
     var description: String!
     var status: Int!
+    var lastGeo: PFGeoPoint!
     var selectedCompanies: NSMutableArray = selectCompanies
     var pendingCompanies: NSMutableArray = pendCompanies
     var parse: PFUser!
@@ -30,6 +31,7 @@ class User {
         self.email = user["email"] as? String
         self.status = user["status"] as? Int
         self.description = user["description"] as? String
+        self.lastGeo = user["description"] as? PFGeoPoint
     }
     
     // MARK: Class Methods
@@ -89,6 +91,12 @@ class User {
     func setStatus(status: Int) {
         self.parse["status"] = status
         self.status = status
+        self.parse.saveInBackgroundWithBlock(nil)
+    }
+    
+    func setGeo(geo: PFGeoPoint) {
+        self.parse["lastGeo"] = geo
+        self.lastGeo = geo
         self.parse.saveInBackgroundWithBlock(nil)
     }
     

@@ -13,6 +13,7 @@ class Job {
     // MARK: Instance Variables
     var name: String!
     var pickup: String!
+    var pickupGeo: PFGeoPoint!
     var destination: String!
     var status: Int!
     var company: Company!
@@ -25,6 +26,7 @@ class Job {
         self.parse = job
         self.name = job["name"] as? String
         self.pickup = job["pickup"] as? String
+        self.pickupGeo = job["pickupGeo"] as? PFGeoPoint
         self.destination = job["destination"] as? String
         self.status = job["status"] as? Int
         
