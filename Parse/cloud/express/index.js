@@ -10,8 +10,7 @@ var routes = {
   api: require("cloud/express/routes/api.js"),
   workers: require("cloud/express/routes/workers.js"),
   jobs: require("cloud/express/routes/jobs.js"),
-  accounts: require("cloud/express/routes/accounts.js"),
-  //webhooks: require("cloud/functions/jobs.js"),
+  accounts: require("cloud/express/routes/accounts.js")
 }
 
 // Global app configuration section
@@ -83,11 +82,9 @@ app.get('/worker/:user/drop', routes.core.auth, routes.workers.dropped)
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)
 app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
 app.get('/api/:job/status', routes.api.auth, routes.api.get.jobStatus)
-app.post('/api/newjob', routes.api.post.jobs)
-app.post('/api/:job/cancel', routes.api.post.cancel)
-app.post('/api/:worker/pending', routes.api.post.pending)
-//Webhooks
-//app.webhooks('/api/:job/jobs_Cancelled', routes.webhooks.jobs.jobs_Cancelled)
+app.post('/api/job', routes.api.auth, routes.api.post.jobs)
+app.post('/api/:job/cancel', routes.api.auth, routes.api.post.cancel)
+app.post('/api/:worker/pending', routes.api.auth, routes.api.post.pending)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)

@@ -1,3 +1,5 @@
+var Jobs = Parse.Object.extend("Jobs")
+
 Parse.Cloud.define("job_Cancelled", function(req, res) { //requires the list of companies
 console.log('%s', "start cancellation") //message confirmation
   var company = req.params.company
@@ -7,7 +9,7 @@ console.log('%s', "start cancellation") //message confirmation
 //add job id
   if(!webhook) {
     console.log('%s', "no webhook") //message confirmation
-    return res.successT()
+    return res.success()
   }
 
   Parse.Cloud.httpRequest({
@@ -17,14 +19,14 @@ console.log('%s', "start cancellation") //message confirmation
       success: true,
       type: "job.cancelled",
       reason: "Carrier aborted during route"
-    } 
-  } 
+    }
+  }
   ).then(function(response) {
-    res.successT()
+    res.success()
     console.log('%s', "job cancelled success") //message confirmation
 
   }, function(error) {
-    res.errorT(error)
+    res.error(error.description)
 console.log('%s', "job cancelled failed") //message failure
 
   })
@@ -35,7 +37,7 @@ Parse.Cloud.define("job_approved", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {
-    return res.successT()
+    return res.success()
   }
   Parse.Cloud.httpRequest ({
     url: webhook,
@@ -46,10 +48,10 @@ Parse.Cloud.define("job_approved", function(req, res) {
       reason: "Carrier accepted job"
     }
   }),then(function(response){
-    res.successT()
+    res.success()
     console.log('%s', "job approved success") //message confirmation
   }, function(error) {
-     res.errorT(error)
+     res.error(error.description)
      console.log('%s', "job approved failed") //message failure
   })
 })
@@ -58,7 +60,7 @@ Parse.Cloud.define("job_enroute", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {
-    return res.successT()
+    return res.success()
   }
   Parse.Cloud.httpRequest ({
     url: webhook,
@@ -69,10 +71,10 @@ Parse.Cloud.define("job_enroute", function(req, res) {
       reason: "Carrier is in route"
     }
   }),then(function(response){
-    res.successT()
+    res.success()
     console.log('%s', "job enroute confirmed") //message confirmation
   }, function(error) {
-     res.errorT(error)
+     res.error(error.description)
      console.log('%s', "job enroute failed confirmation") //message failure
   })
 })
@@ -81,7 +83,7 @@ Parse.Cloud.define("job_pending", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {
-    return res.successT()
+    return res.success()
   }
   Parse.Cloud.httpRequest ({
     url: webhook,
@@ -92,36 +94,66 @@ Parse.Cloud.define("job_pending", function(req, res) {
       reason: "No Carrier has accepted this job yet."
     }
   }),then(function(response){
-    res.successT()
+    res.success()
     console.log('%s', "job pending confirmed") //message confirmation
   }, function(error) {
-     res.errorT(error)
+     res.error(error.description)
      console.log('%s', "job pending failed confirmation") //message failure
   })
 })
 
-Parse.Cloud.job("carrier_search", function(req, res) {
- 
-  var job = req.param("job")
-  var userStatus = user.get("status")
-  var pickup = new Parse.GeoPoint(job.get("pickupGeo"))
-  var query = new Parse.Query(Parse.User)
+Parse.Cloud.define("carrier_search", function(req, res) {
+  var job = new Jobs()
 
-  query.matchesQuery("user", userStatus.query.equalTo(2))
+  job.id = req.params.job
+  job.fetch().then(function(job) {
+    var query = new Parse.Query(Parse.Installation)
+    var userQuery = new Parse.Query(Parse.User);
 
-  query.near(lastGeo, pickup)
+    userQuery.equalTo("status", 2)
+    userQuery.near("lastGeo", job.get("pickupGeo"))
+    userQuery.limit(1)
+    userQuery.ascending("lastGeo")
+    query.matchesQuery("user", userQuery)
 
-  query.first().then(function(job){
-    return Parse.push.send({
-      where: query
+    return Parse.Push.send({
+      where: query,
       data: {
         action: "job.invite",
         job: job.id
       }
+    }).then(function() {
+      res.success("It worked")
     })
   })
 })
 
 
+Parse.Cloud.job("carrier_search", function(req, res) {
+  Parse.Cloud.run('carrier_search', req.params)
+})
 
-
+Parse.Cloud.job("new_job", function(req, res) {
+  Parse.Cloud.httpRequest({
+    url:'http://enjoypnd.soojuicy.com/api/job',
+    method: "POST",
+    params: {
+      key: "qjn0pdyl28qqto6r",
+      secret: "r3jy1qfw2ltbj4i",
+      name: "Ride to Surf Rider Cafe",
+      pickup: JSON.stringify({
+        address: "641 Merrill Road, Santa Cruz CA 95064, United States",
+        lat: 36.999704,
+        lng: -122.052111
+      }),
+      destination: JSON.stringify({
+        address: "429 Front Street, Santa Cruz, CA",
+        lat: 36.971435,
+        lng: -122.024496
+      })
+    }
+  }).then(function(response) {
+    console.log(response)
+    res.success("It worked")
+  })
+})

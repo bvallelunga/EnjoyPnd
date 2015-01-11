@@ -37,32 +37,36 @@ module.exports.jobs = function(req, res) {
   */
 
   var job = new Jobs()
-  var company = new Company()
-  company.id = req.param("company")
-
   var pickup = req.param('pickup')
   var destination = req.param('destination')
-
-  job.set("company", company)
-  job.set("destination", destination.address)
-  job.set("name", req.param("name"))
-  job.set("status", 1)
-  job.set("pickup", pickup.address)
-  job.set("pickupGeo", new Parse.GeoPoint(parseFloat(pickup.lat), parseFloat( pickup.lng)))
-
 
   if(!destination || !pickup || req.param("name") == null) {
     return res.errorT("Missing parameter(s)")
   }
 
+  if(typeof pickup == "string") {
+    pickup = JSON.parse(pickup)
+    destination = JSON.parse(destination)
+  }
+
+  job.set("company", req.company)
+  job.set("destination", destination.address)
+  job.set("name", req.param("name"))
+  job.set("status", 1)
+  job.set("pickup", pickup.address)
+  job.set("pickupGeo", new Parse.GeoPoint(parseFloat(pickup.lat), parseFloat(pickup.lng)))
+
   job.save().then(function() {
-    carrier_search(job)
+    Parse.Cloud.run('carrier_search', {
+      job: job.id
+    })
+
     res.successT()
   }, res.errorT)
 }
 
 
-module.exports.cancel = function(req, res) {  
+module.exports.cancel = function(req, res) {
   var job = req.param("job")
   var query = new Parse.Query(Jobs)
 
