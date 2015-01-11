@@ -4,7 +4,7 @@ Creates a new job after taking in company
 authentication by using pickup and destination
 GeoPoints and address strings, and continuously
 searches in the background for the first 
-available worker in closest proximityto this
+available worker in closest proximity to this
 new jobs pickup site.
 
 ```
@@ -37,6 +37,14 @@ POST /api/job/
 
 ```
 
+**Returns**
+
+```
+{
+  success: Boolean
+}
+```
+
 ## Cancel Job
 
 Sets the specified jobs status to Cancelled .
@@ -56,6 +64,13 @@ POST /api/:job/cancel
  
   // API Parameters
   job: String
+}
+```
+
+**Returns**
+```
+{
+  success: Boolean
 }
 ```
 
@@ -80,3 +95,13 @@ GET /api/:job/status
   job: String  
 }
 ```
+
+**Returns**
+
+'''
+{
+  status: Float
+  success: Boolean
+
+}
+'''
