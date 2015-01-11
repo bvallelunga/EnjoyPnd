@@ -1,16 +1,12 @@
-# Worker
-
 ## Workers
-
-description:
-returns worker information for a specific company
+Get worker information for a specific company
 
 ```
 GET /api/workers/
 ```
 
 **Parameters**
-
+```
 {
   
   // Company Identification
@@ -21,10 +17,10 @@ GET /api/workers/
   company: String
 
 }
+```
 
 ## Worker Pending
 
-description:
 Adds workers of a company to be pending for a job.
 
 ```
@@ -42,14 +38,14 @@ GET /api/workers/pending
   secret: String
   
   // API Parameters
-  company: String 
+  worker: String 
   
 }
+```
 
 ## Worker Info
 
-description:
-returns the username, company name, email, name, and status
+Returns the username, company name, email, name, and status
 that the worker is associated with.
 
 ```
@@ -67,37 +63,13 @@ GET /api/:worker/info
   secret: String
   
   // API Parameters
-  id: String
+  worker: String
   
 }
-
-## Worker Function
-
-description:
-Adds workers of a company to be pending for a job.
-
-```
-GET /api/workers/pending
 ```
 
-**Parameters**
+## Approve or Decline Pending Worker
 
-```
-
-{
-  
-  // Company Indentification
-  key: String
-  secret: String
-  
-  // API Parameters
-  company: String 
-  
-}
-
-## Worker Function
-
-description:
 Updates the company's worker list with approved 
 workers that had a pending employment status in the company.
 
@@ -116,7 +88,7 @@ POST /api/:worker/pending
   secret: String
   
   // API Parameters
-  company: String
-  user: String
+  worker: String
   
 }
+```
