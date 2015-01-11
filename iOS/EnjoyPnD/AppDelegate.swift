@@ -48,6 +48,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let infoDictionary = NSBundle.mainBundle().infoDictionary!
+        let version = infoDictionary["CFBundleShortVersionString"] as NSString
+        let build = infoDictionary[kCFBundleVersionKey] as NSString
+        var installation = PFInstallation.currentInstallation()
+        
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.addUniqueObject("termsChanged", forKey: "channels")
+        installation.addUniqueObject("juicyPost", forKey: "channels")
+        installation.addUniqueObject("juicyUser", forKey: "channels")
+        installation.addUniqueObject("sharedPost", forKey: "channels")
+        installation.setObject("\(version) - \(build)", forKey: "appVersionBuild")
+        installation.saveInBackgroundWithBlock(nil)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        if application.applicationState == UIApplicationState.Inactive {
+            // The application was just brought from the background to the foreground,
+            // so we consider the app as having been "opened by a push notification."
+            PFAnalytics.trackAppOpenedWithRemoteNotificationPayloadInBackground(userInfo, block: nil)
+        }
+        
+        if let action = userInfo["action"] as? String {
+            if action == "update.config" {
+            }
+        }
+        
+        println(123)
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -57,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        User.current()?.setStatus(1)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -69,8 +100,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        User.current()?.setStatus(1)
     }
-
 
 }
 

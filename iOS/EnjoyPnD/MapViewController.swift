@@ -24,6 +24,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Update User Status
+        self.user.setStatus(2)
+        
         // Create Location Manager
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -43,7 +46,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         // Configure Location Label
         var buttonBorder = UIView(frame: CGRectMake(0, self.locationLabel.frame.height-1, self.view.frame.width, 1))
-        buttonBorder.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        buttonBorder.backgroundColor = UIColor(white: 0, alpha: 0.15)
         self.locationLabel.addSubview(buttonBorder)
     }
     

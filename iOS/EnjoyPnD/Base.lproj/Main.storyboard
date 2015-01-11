@@ -386,13 +386,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="ecT-z2-KpL">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="mapSegue:" destination="Iha-7j-0Za" id="eZ0-bk-ijN"/>
+                                <action selector="goToMap:" destination="Iha-7j-0Za" id="bWs-Ih-X4v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <segue destination="0HF-xY-i1H" kind="custom" identifier="mapSegue" customClass="NoAnimationSegue" id="Bt3-0H-n0I"/>
+                        <segue destination="0HF-xY-i1H" kind="custom" identifier="mapSegue" customClass="NoAnimationSegue" id="W6P-dJ-Hn4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nD-Rg-dxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -482,7 +482,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to Companies" id="5U3-kf-Q3B">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Bh7-B3-SNA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Bh7-B3-SNA">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelApply:" destination="iHc-qe-MI2" id="YFo-DV-6Vr"/>

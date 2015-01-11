@@ -40,10 +40,8 @@ class CompaniesTableController: UITableViewController {
     }
     
     // MARK: IBActions
-    @IBAction func mapSegue(sender: UIBarButtonItem) {
-        if(self.user.selectedCompanies.count != 0) {
-            self.performSegueWithIdentifier("mapSegue", sender: self)
-        }
+    @IBAction func goToMap(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("mapSegue", sender: self)
     }
     
     // MARK: Instance Methods

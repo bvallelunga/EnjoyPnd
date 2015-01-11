@@ -34,6 +34,9 @@ class User {
     class func login(email: String, password: String, callback: ((success: Bool) -> Void)) {
         PFUser.logInWithUsernameInBackground(email, password: password) {
             (user: PFUser!, error: NSError!) -> Void in
+            var installation = PFInstallation.currentInstallation()
+            installation["user"] = user
+            installation.saveInBackgroundWithBlock(nil)
             callback(success: user != nil && error == nil)
         }
     }
@@ -43,8 +46,12 @@ class User {
         user.email = email
         user.username = email
         user.password = password
+        user["status"] = 1
         
         user.signUpInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+            var installation = PFInstallation.currentInstallation()
+            installation["user"] = user
+            installation.saveInBackgroundWithBlock(nil)
             callback(success: success && error == nil)
         }
     }
@@ -67,12 +74,18 @@ class User {
     func logout() {
         self.selectedCompanies.removeAllObjects()
         self.pendingCompanies.removeAllObjects()
+        self.setStatus(1)
         PFUser.logOut()
     }
     
     func setInfo(name: String, description: String) {
         self.parse["name"] = name
         self.parse["description"] = description
+        self.parse.saveInBackgroundWithBlock(nil)
+    }
+    
+    func setStatus(status: Int) {
+        self.parse["status"] = status
         self.parse.saveInBackgroundWithBlock(nil)
     }
     
