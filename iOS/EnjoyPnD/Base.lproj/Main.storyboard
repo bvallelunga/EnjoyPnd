@@ -10,6 +10,7 @@
             <string>Ubuntu-Bold</string>
             <string>Ubuntu-Bold</string>
             <string>Ubuntu-Bold</string>
+            <string>Ubuntu-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -425,10 +426,10 @@
                                 <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-HU-6f4">
-                                <rect key="frame" x="0.0" y="568" width="320" height="250"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="220"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJG-yS-gp2">
-                                        <rect key="frame" x="8" y="20" width="304" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJG-yS-gp2">
+                                        <rect key="frame" x="15" y="20" width="205" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="9zo-AS-k63"/>
                                         </constraints>
@@ -436,17 +437,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-b3-c6q">
-                                        <rect key="frame" x="8" y="63" width="304" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-b3-c6q">
+                                        <rect key="frame" x="15" y="63" width="290" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="1S1-B9-XeO"/>
+                                            <constraint firstAttribute="height" constant="50" id="1S1-B9-XeO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-uk-yIg">
-                                        <rect key="frame" x="16" y="164" width="288" height="60"/>
+                                        <rect key="frame" x="16" y="134" width="288" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="yyR-0G-dKH"/>
                                         </constraints>
@@ -461,25 +462,37 @@
                                             <action selector="openMapsInside:" destination="0HF-xY-i1H" eventType="touchUpInside" id="TSF-HL-Hvc"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccB-MO-5fm">
+                                        <rect key="frame" x="230" y="20" width="75" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="gf7-vf-hE6"/>
+                                            <constraint firstAttribute="height" constant="36" id="y4L-8H-umU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196078431371" green="0.52156862745098043" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="o0J-b3-c6q" firstAttribute="leading" secondItem="mlc-HU-6f4" secondAttribute="leading" constant="8" id="AJc-H2-lTJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="o0J-b3-c6q" secondAttribute="trailing" constant="8" id="Bod-St-mve"/>
+                                    <constraint firstItem="ccB-MO-5fm" firstAttribute="top" secondItem="mlc-HU-6f4" secondAttribute="top" constant="20" id="5G7-fd-PBE"/>
+                                    <constraint firstItem="o0J-b3-c6q" firstAttribute="leading" secondItem="mlc-HU-6f4" secondAttribute="leading" constant="15" id="AJc-H2-lTJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="o0J-b3-c6q" secondAttribute="trailing" constant="15" id="Bod-St-mve"/>
                                     <constraint firstItem="cJG-yS-gp2" firstAttribute="top" secondItem="mlc-HU-6f4" secondAttribute="top" constant="20" id="K7R-hN-odq"/>
                                     <constraint firstItem="o0J-b3-c6q" firstAttribute="top" secondItem="cJG-yS-gp2" secondAttribute="bottom" constant="7.5" id="KC6-XJ-Gqp"/>
                                     <constraint firstAttribute="trailing" secondItem="PmX-uk-yIg" secondAttribute="trailing" constant="16" id="cBb-t8-KUL"/>
                                     <constraint firstAttribute="bottom" secondItem="PmX-uk-yIg" secondAttribute="bottom" constant="26" id="cEy-sW-OpI"/>
-                                    <constraint firstAttribute="trailing" secondItem="cJG-yS-gp2" secondAttribute="trailing" constant="8" id="fko-TT-CJu"/>
-                                    <constraint firstItem="cJG-yS-gp2" firstAttribute="leading" secondItem="mlc-HU-6f4" secondAttribute="leading" constant="8" id="ggp-Hj-0IV"/>
+                                    <constraint firstAttribute="trailing" secondItem="ccB-MO-5fm" secondAttribute="trailing" constant="15" id="e0G-6E-PaS"/>
+                                    <constraint firstAttribute="trailing" secondItem="cJG-yS-gp2" secondAttribute="trailing" constant="100" id="fko-TT-CJu"/>
+                                    <constraint firstItem="cJG-yS-gp2" firstAttribute="leading" secondItem="mlc-HU-6f4" secondAttribute="leading" constant="15" id="ggp-Hj-0IV"/>
                                     <constraint firstItem="PmX-uk-yIg" firstAttribute="leading" secondItem="mlc-HU-6f4" secondAttribute="leading" constant="16" id="nto-fI-2qG"/>
-                                    <constraint firstAttribute="height" constant="250" id="ohi-7h-8tQ"/>
+                                    <constraint firstAttribute="height" constant="220" id="ohi-7h-8tQ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vma-lT-E0p" firstAttribute="top" secondItem="mlc-HU-6f4" secondAttribute="bottom" constant="-250" id="1hY-LH-SeO"/>
+                            <constraint firstItem="Vma-lT-E0p" firstAttribute="top" secondItem="mlc-HU-6f4" secondAttribute="bottom" constant="-220" id="1hY-LH-SeO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mlc-HU-6f4" secondAttribute="trailing" constant="-16" id="UOc-h7-zOl"/>
                             <constraint firstItem="5qQ-7E-yoF" firstAttribute="top" secondItem="E8T-jE-PEf" secondAttribute="bottom" id="UVs-tb-ASf"/>
                             <constraint firstItem="mlc-HU-6f4" firstAttribute="top" secondItem="5qQ-7E-yoF" secondAttribute="bottom" id="VCX-wq-xfe"/>
@@ -513,6 +526,7 @@
                         <outlet property="popMaps" destination="PmX-uk-yIg" id="abR-bk-1xQ"/>
                         <outlet property="popName" destination="cJG-yS-gp2" id="b8x-bm-ekE"/>
                         <outlet property="popView" destination="mlc-HU-6f4" id="7i5-r2-DSh"/>
+                        <outlet property="rightCornerButton" destination="psX-w2-Ueo" id="bkc-ma-B6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jg1-r2-Klp" userLabel="First Responder" sceneMemberID="firstResponder"/>

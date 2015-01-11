@@ -19,6 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var popName: UILabel!
     @IBOutlet weak var popDescription: UILabel!
     @IBOutlet weak var popMaps: UIButton!
+    @IBOutlet weak var rightCornerButton: UIBarButtonItem!
     
     // MARK: Instance Variables
     private var user: User = User.current()
@@ -183,10 +184,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: Instance Methods
     func showPopView(job: Job) {
         job.getCompany { (company) -> Void in
+            if(self.ballView != nil) {
+                self.ballView.removeFromSuperview()
+            }
+            
             var frame = CGRectMake(self.view.frame.width/2 - 25, self.popView.frame.height - 80, 50, 50)
             self.ballView = BallView(frame: frame)
             self.ballView.delegate = self
             self.popView.addSubview(self.ballView)
+            
             self.popView.backgroundColor = self.regularColor
             self.popName.text = company.name
             self.popDescription.text = job.name
