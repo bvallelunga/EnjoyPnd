@@ -41,7 +41,7 @@ POST /api/job/
 
 ```
 {
-  success: Boolean
+  success: true
 }
 ```
 
@@ -70,7 +70,7 @@ POST /api/:job/cancel
 **Returns**
 ```
 {
-  success: Boolean
+  success: true
 }
 ```
 
@@ -100,8 +100,8 @@ GET /api/:job/status
 
 ```
 {
-  status: Float
-  success: Boolean
+  status: String
+  success: true
 }
 ```
 
