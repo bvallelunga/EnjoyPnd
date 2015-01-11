@@ -11,7 +11,6 @@
 		D306B0E01A61D3E00039A158 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D306B0DE1A61D3E00039A158 /* Main.storyboard */; };
 		D306B0E21A61D3E00039A158 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D306B0E11A61D3E00039A158 /* Images.xcassets */; };
 		D306B0F11A61D3E00039A158 /* EnjoyPnDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B0F01A61D3E00039A158 /* EnjoyPnDTests.swift */; };
-		D306B0FB1A61DF930039A158 /* Ubuntu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D306B0FA1A61DF930039A158 /* Ubuntu.ttf */; };
 		D306B1291A61E1810039A158 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1261A61E1590039A158 /* QuartzCore.framework */; };
 		D306B12A1A61E1810039A158 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1241A61E14E0039A158 /* MobileCoreServices.framework */; };
 		D306B12B1A61E1810039A158 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1221A61E1450039A158 /* CoreLocation.framework */; };
@@ -43,6 +42,10 @@
 		D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */; };
 		D3CD0DF41A6224F600B8D54D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD0DF31A6224F600B8D54D /* MapViewController.swift */; };
 		D3CD0DF71A6227BE00B8D54D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CD0DF61A6227BE00B8D54D /* MapKit.framework */; };
+		D3CD0DF91A62659D00B8D54D /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3CD0DF81A62659D00B8D54D /* Ubuntu-B.ttf */; };
+		D3CD0DFB1A626CC700B8D54D /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD0DFA1A626CC700B8D54D /* BallView.swift */; };
+		D3CD0DFD1A628DF800B8D54D /* WindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD0DFC1A628DF800B8D54D /* WindowExtension.swift */; };
+		D3CD0E001A628FA400B8D54D /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD0DFF1A628FA400B8D54D /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +67,6 @@
 		D306B0EA1A61D3E00039A158 /* EnjoyPnDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnjoyPnDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D306B0EF1A61D3E00039A158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D306B0F01A61D3E00039A158 /* EnjoyPnDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnjoyPnDTests.swift; sourceTree = "<group>"; };
-		D306B0FA1A61DF930039A158 /* Ubuntu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ubuntu.ttf; path = "../../../../Downloads/ubuntu-font-family-0.80/Ubuntu.ttf"; sourceTree = "<group>"; };
 		D306B1001A61E0780039A158 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
 		D306B1011A61E0780039A158 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
 		D306B1021A61E0780039A158 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -97,6 +99,10 @@
 		D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3CD0DF31A6224F600B8D54D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D3CD0DF61A6227BE00B8D54D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D3CD0DF81A62659D00B8D54D /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
+		D3CD0DFA1A626CC700B8D54D /* BallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
+		D3CD0DFC1A628DF800B8D54D /* WindowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowExtension.swift; sourceTree = "<group>"; };
+		D3CD0DFF1A628FA400B8D54D /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 				D306B0FD1A61DFFC0039A158 /* Models */,
 				D306B0FE1A61E00E0039A158 /* Controllers */,
 				D306B0FF1A61E0340039A158 /* Views */,
+				D3CD0DFE1A628E1100B8D54D /* Extension */,
 				D306B0D81A61D3E00039A158 /* Supporting Files */,
 			);
 			path = EnjoyPnD;
@@ -172,7 +179,7 @@
 		D306B0D81A61D3E00039A158 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D306B0FA1A61DF930039A158 /* Ubuntu.ttf */,
+				D3CD0DF81A62659D00B8D54D /* Ubuntu-B.ttf */,
 				D306B0E11A61D3E00039A158 /* Images.xcassets */,
 				D306B0D91A61D3E00039A158 /* Info.plist */,
 				D306B13E1A61E23C0039A158 /* EnjoyPnD-Bridging-Header.h */,
@@ -212,6 +219,7 @@
 			children = (
 				D3C0F4441A61EB860092F126 /* User.swift */,
 				D3AC9AE01A621150000A0A76 /* Company.swift */,
+				D3CD0DFF1A628FA400B8D54D /* Job.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 		D306B0FF1A61E0340039A158 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3CD0DFA1A626CC700B8D54D /* BallView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -303,6 +312,14 @@
 				D3CD0DF31A6224F600B8D54D /* MapViewController.swift */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		D3CD0DFE1A628E1100B8D54D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D3CD0DFC1A628DF800B8D54D /* WindowExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,7 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D306B0FB1A61DF930039A158 /* Ubuntu.ttf in Resources */,
+				D3CD0DF91A62659D00B8D54D /* Ubuntu-B.ttf in Resources */,
 				D306B0E01A61D3E00039A158 /* Main.storyboard in Resources */,
 				D306B0E21A61D3E00039A158 /* Images.xcassets in Resources */,
 			);
@@ -411,9 +428,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CD0DFD1A628DF800B8D54D /* WindowExtension.swift in Sources */,
 				D3CD0DF41A6224F600B8D54D /* MapViewController.swift in Sources */,
 				D306B1441A61E5480039A158 /* HomeController.swift in Sources */,
 				D306B0DB1A61D3E00039A158 /* AppDelegate.swift in Sources */,
+				D3CD0DFB1A626CC700B8D54D /* BallView.swift in Sources */,
+				D3CD0E001A628FA400B8D54D /* Job.swift in Sources */,
 				D3AC9AE11A621150000A0A76 /* Company.swift in Sources */,
 				D3C0F4451A61EB860092F126 /* User.swift in Sources */,
 				D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */,

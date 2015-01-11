@@ -10,15 +10,26 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, BallViewDelegate {
     
     // MARK: IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var popView: UIView!
+    @IBOutlet weak var popName: UILabel!
+    @IBOutlet weak var popDescription: UILabel!
+    @IBOutlet weak var popMaps: UIButton!
     
     // MARK: Instance Variables
     private var user: User = User.current()
+    private var job: Job!
     private var locationManager: CLLocationManager!
+    private var ballView: BallView!
+    private var popupConstraint: NSLayoutConstraint!
+    private let duration: NSTimeInterval = NSTimeInterval(0.2)
+    private let regularColor = UIColor(red:0.18, green:0.59, blue:0.87, alpha:1)
+    private let likeColor = UIColor(red:0.43, green:0.69, blue:0.21, alpha: 0.8).CGColor
+    private let nopeColor = UIColor(red:0.93, green:0.19, blue:0.25, alpha: 0.8).CGColor
     
     // MARK: UIViewController Overrides
     override func viewDidLoad() {
@@ -48,6 +59,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var buttonBorder = UIView(frame: CGRectMake(0, self.locationLabel.frame.height-1, self.view.frame.width, 1))
         buttonBorder.backgroundColor = UIColor(white: 0, alpha: 0.15)
         self.locationLabel.addSubview(buttonBorder)
+        
+        // Configure Popup View
+        var popupBorder = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 1))
+        popupBorder.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        self.popView.addSubview(popupBorder)
+        
+        // Configure Popup Button
+        self.popMaps.layer.cornerRadius = 3
+        self.popMaps.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        self.popMaps.alpha = 0
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,7 +115,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             })
         }
     }
-
     
     // MARK: IBActions
     @IBAction func addCompanies(sender: UIBarButtonItem) {
@@ -105,4 +125,109 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.user.logout()
         self.navigationController?.popToRootViewControllerAnimated(false)
     }
+    
+    @IBAction func openMapsInside(sender: UIButton) {
+        self.popMaps.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        
+        var pickup = self.job.pickup.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var destination = self.job.destination.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var url = NSURL(string: "http://maps.apple.com/maps?saddr=\(pickup)&daddr=\(destination)")        
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    @IBAction func openMapsDown(sender: UIButton) {
+        self.popMaps.tintColor = UIColor.whiteColor()
+        self.popMaps.backgroundColor = UIColor(white: 0, alpha: 0.35)
+    }
+    
+    @IBAction func openMapsExit(sender: UIButton) {
+        self.popMaps.backgroundColor = UIColor(white: 0, alpha: 0.2)
+    }
+    
+    // MARK: BallView Methods
+    func ballMovingAroundScreen(ball: BallView, percentage: CGFloat, delta: CGFloat) {
+        var newColor: CGColor!
+        
+        if delta < 0 {
+            newColor = self.likeColor
+        } else {
+            newColor = self.nopeColor
+        }
+        
+        self.popView.backgroundColor = self.mixColors(self.regularColor.CGColor, colorTwo: newColor, delta: percentage)
+    }
+    
+    func ballDidReturnToCenter(ball: BallView) {
+        UIView.animateWithDuration(self.duration, animations: { () -> Void in
+            self.popView.backgroundColor = self.regularColor
+        })
+    }
+    
+    func ballDidLeaveScreen(ball: BallView) {
+        if(ball.status == .Accept) {
+            self.user.setStatus(4)
+            self.job.setStatus(2)
+            
+            UIView.animateWithDuration(self.duration, animations: { () -> Void in
+                self.popMaps.alpha = 1
+            })
+        } else {
+            self.job.setStatus(3)
+            self.hidePopView()
+        }
+    }
+    
+    // MARK: Instance Methods
+    func showPopView(job: Job) {
+        job.getCompany { (company) -> Void in
+            var frame = CGRectMake(self.view.frame.width/2 - 25, self.popView.frame.height - 80, 50, 50)
+            self.ballView = BallView(frame: frame)
+            self.ballView.delegate = self
+            self.popView.addSubview(self.ballView)
+            self.popView.backgroundColor = self.regularColor
+            self.popName.text = company.name
+            self.popDescription.text = job.name
+            
+            self.popupConstraint = NSLayoutConstraint(item: self.popView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
+            self.view.addConstraint(self.popupConstraint)
+            
+            UIView.animateWithDuration(self.duration, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        self.job = job
+    }
+    
+    func hidePopView() {
+        self.view.removeConstraint(self.popupConstraint)
+        self.popupConstraint = NSLayoutConstraint(item: self.popView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: self.popView.frame.height)
+        self.view.addConstraint(self.popupConstraint)
+        
+        UIView.animateWithDuration(self.duration, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func mixColors(colorOne: CGColor!, colorTwo: CGColor!, delta: CGFloat) -> UIColor {
+        var colorOneComp = CGColorGetComponents(colorOne)
+        var colorOneRed = colorOneComp[0]
+        var colorOneGreen = colorOneComp[1]
+        var colorOneBlue = colorOneComp[2]
+        var colorOneAlpha = colorOneComp[3]
+        
+        var colorTwoComp = CGColorGetComponents(colorTwo)
+        var colorTwoRed = colorTwoComp[0]
+        var colorTwoGreen = colorTwoComp[1]
+        var colorTwoBlue = colorTwoComp[2]
+        var colorTwoAlpha = colorTwoComp[3]
+        
+        var newRed = (colorOneRed * (1 - delta)) + (colorTwoRed * delta)
+        var newGreen = (colorOneGreen * (1 - delta)) + (colorTwoGreen * delta)
+        var newBlue = (colorOneBlue * (1 - delta)) + (colorTwoBlue * delta)
+        var newAlpha = (colorOneAlpha * (1 - delta)) + (colorTwoAlpha * delta)
+        
+        return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha)
+    }
+
 }
