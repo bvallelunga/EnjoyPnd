@@ -97,3 +97,24 @@ Parse.Cloud.define("jobs_pending", function(req, res) {
      console.log('%s', "job pending failed confirmation") //message failure
   })
 })
+
+Parse.Cloud.job("carrier_search", function(req, res) {
+ 
+  var job = req.param("job")
+  var pickup = new Parse.GeoPoint(job.get("pickupGeo"))
+  var company = req.param("company")
+  var query = new Parse.Query(User)
+
+  query.near(lastGeo, pickup)
+  query.equalTo(status, 2)
+  query.first().then(function(job){
+    Parse.push.send({
+      action: "job.invite",
+      company: company.id
+    })
+  })
+})
+
+
+
+
