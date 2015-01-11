@@ -101,14 +101,21 @@ Parse.Cloud.define("jobs_pending", function(req, res) {
 Parse.Cloud.job("carrier_search", function(req, res) {
  
   var job = req.param("job")
+  var userStatus = user.get("status")
   var pickup = new Parse.GeoPoint(job.get("pickupGeo"))
-  var query = new Parse.Query(User)
+  var query = new Parse.Query(Parse.User)
+
+  query.matchesQuery("user", userStatus.query.equalTo(2))
 
   query.near(lastGeo, pickup)
-  query.equalTo(status, 2)
+
   query.first().then(function(job){
-    Parse.push.send({
-      action: "job.invite"
+    return Parse.push.send({
+      where: query
+      data: {
+        action: "job.invite",
+        job: job.id
+      }
     })
   })
 })

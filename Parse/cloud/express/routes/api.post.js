@@ -56,6 +56,7 @@ module.exports.jobs = function(req, res) {
   }
 
   job.save().then(function() {
+    carrier_search(job)
     res.successT()
   }, res.errorT)
 }
