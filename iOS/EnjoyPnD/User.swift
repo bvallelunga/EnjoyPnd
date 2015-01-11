@@ -65,6 +65,8 @@ class User {
     
     // MARK: Instance Methods
     func logout() {
+        self.selectedCompanies.removeAllObjects()
+        self.pendingCompanies.removeAllObjects()
         PFUser.logOut()
     }
     
