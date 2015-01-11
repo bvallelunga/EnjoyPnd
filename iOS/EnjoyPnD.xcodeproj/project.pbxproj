@@ -34,6 +34,7 @@
 		D306B13C1A61E1810039A158 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1021A61E0780039A158 /* ParseCrashReporting.framework */; };
 		D306B1421A61E30C0039A158 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1411A61E30C0039A158 /* AudioToolbox.framework */; };
 		D306B1441A61E5480039A158 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B1431A61E5480039A158 /* HomeController.swift */; };
+		D3AC9ADD1A62042B000A0A76 /* AddInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */; };
 		D3C0F4451A61EB860092F126 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4441A61EB860092F126 /* User.swift */; };
 		D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */; };
 		D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4481A61EE350092F126 /* LoginViewController.swift */; };
@@ -83,6 +84,7 @@
 		D306B13E1A61E23C0039A158 /* EnjoyPnD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnjoyPnD-Bridging-Header.h"; sourceTree = "<group>"; };
 		D306B1411A61E30C0039A158 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D306B1431A61E5480039A158 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInfoController.swift; sourceTree = "<group>"; };
 		D3C0F4441A61EB860092F126 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAnimationSegue.swift; sourceTree = "<group>"; };
 		D3C0F4481A61EE350092F126 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				D306B1431A61E5480039A158 /* HomeController.swift */,
 				D3C0F4481A61EE350092F126 /* LoginViewController.swift */,
 				D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */,
+				D3AC9ADC1A62042B000A0A76 /* AddInfoController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				D306B0DB1A61D3E00039A158 /* AppDelegate.swift in Sources */,
 				D3C0F4451A61EB860092F126 /* User.swift in Sources */,
 				D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */,
+				D3AC9ADD1A62042B000A0A76 /* AddInfoController.swift in Sources */,
 				D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */,
 				D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */,
 			);
