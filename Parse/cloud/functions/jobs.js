@@ -1,8 +1,10 @@
-Parse.Cloud.define("jobs_Cancelled", function(req, res) { //requires the list of companies
+Parse.Cloud.define("job_Cancelled", function(req, res) { //requires the list of companies
 console.log('%s', "start cancellation") //message confirmation
   var company = req.params.company
+  //var company = req.param("company")
+  //company.id = get.param("company")
   var webhook = company.get("webhook")
-
+//add job id
   if(!webhook) {
     console.log('%s', "no webhook") //message confirmation
     return res.successT()
@@ -29,7 +31,7 @@ console.log('%s', "job cancelled failed") //message failure
 })
 
 
-Parse.Cloud.define("jobs_approved", function(req, res) {
+Parse.Cloud.define("job_approved", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {
@@ -52,7 +54,7 @@ Parse.Cloud.define("jobs_approved", function(req, res) {
   })
 })
 
-Parse.Cloud.define("jobs_enroute", function(req, res) {
+Parse.Cloud.define("job_enroute", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {
@@ -75,7 +77,7 @@ Parse.Cloud.define("jobs_enroute", function(req, res) {
   })
 })
 
-Parse.Cloud.define("jobs_pending", function(req, res) {
+Parse.Cloud.define("job_pending", function(req, res) {
   var company = req.params.company
   var webhook = company.get("webhook")
   if (!webhook) {

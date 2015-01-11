@@ -11,7 +11,7 @@ var routes = {
   workers: require("cloud/express/routes/workers.js"),
   jobs: require("cloud/express/routes/jobs.js"),
   accounts: require("cloud/express/routes/accounts.js"),
-  webhooks: require("cloud/functions/jobs.js"),
+  //webhooks: require("cloud/functions/jobs.js"),
 }
 
 // Global app configuration section
@@ -87,7 +87,7 @@ app.post('/api/newjob', routes.api.post.jobs)
 app.post('/api/:job/cancel', routes.api.post.cancel)
 app.post('/api/:worker/pending', routes.api.post.pending)
 //Webhooks
-//app.get('/api/job/jobs_Cancelled', routes.webhooks.jobs.jobs_Cancelled)
+//app.webhooks('/api/:job/jobs_Cancelled', routes.webhooks.jobs.jobs_Cancelled)
 
 // Not Found Redirect
 app.all("*", routes.core.notfound)
