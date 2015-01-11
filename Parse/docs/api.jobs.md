@@ -1,6 +1,4 @@
-# Job
-
-## New Job  -  module.export.jobs
+## New Job
 
 Creates a new job after taking in company
 authentication by using pickup and destination
@@ -44,13 +42,18 @@ POST /api/job/
 Sets the specified jobs status to Cancelled .
 
 ```
-POST /api/job/
+POST /api/:job/cancel
 ```
 
 **Parameters**
 
 ```
-{  
+{ 
+  // Company Indentification
+
+  key: String
+  secret: String
+ 
   // API Parameters
   job: String
 }
@@ -61,13 +64,18 @@ POST /api/job/
 Returns the value for the specified jobs status.
 
 ```
-GET /api/job/
+GET /api/:job/status
 ```
 
 **Parameters**
 
 ```
 {  
+  // Company Indentification
+
+  key: String
+  secret: String
+  
   // API Parameters
   job: String  
 }
