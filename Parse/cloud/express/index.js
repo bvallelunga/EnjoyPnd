@@ -82,7 +82,7 @@ app.get('/worker/:user/drop', routes.core.auth, routes.workers.dropped)
 // API
 app.get('/api/workers', routes.api.auth, routes.api.get.workers)
 app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
-app.get('/api/:job/status', routes.api.get.jobStatus)
+app.get('/api/:job/status', routes.api.auth, routes.api.get.jobStatus)
 app.post('/api/newjob', routes.api.post.jobs)
 app.post('/api/:job/cancel', routes.api.post.cancel)
 app.post('/api/:worker/pending', routes.api.post.pending)
