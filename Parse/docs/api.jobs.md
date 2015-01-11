@@ -2,9 +2,12 @@
 
 ## New Job  -  module.export.jobs
 
-Creates a new job and searches for the first
-available user by nearest location to the job
-pickup site.
+Creates a new job after taking in company
+authentication by using pickup and destination
+GeoPoints and address strings, and continuously
+searches in the background for the first 
+available worker in closest proximityto this
+new jobs pickup site.
 
 ```
 POST /api/job/
@@ -13,8 +16,7 @@ POST /api/job/
 **Parameters**
 
 ```
-{
-  
+{  
   // Company Indentification
 
   key: String
@@ -32,8 +34,7 @@ POST /api/job/
     address: String,
     lat: Float,
     lng: Float
-  }
-  
+  }  
 }
 
 ```
@@ -49,11 +50,9 @@ POST /api/job/
 **Parameters**
 
 ```
-{
-  
+{  
   // API Parameters
   job: String
-  
 }
 ```
 
@@ -68,10 +67,8 @@ GET /api/job/
 **Parameters**
 
 ```
-{
-  
+{  
   // API Parameters
-  job: String
-  
+  job: String  
 }
 ```
