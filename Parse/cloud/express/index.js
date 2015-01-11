@@ -85,6 +85,7 @@ app.get('/api/workers/pending', routes.api.auth, routes.api.get.pendingWorkers)
 app.get('/api/:job/status', routes.api.get.jobStatus)
 app.post('/api/newjob', routes.api.post.jobs)
 app.post('/api/:job/cancel', routes.api.post.cancel)
+app.post('/api/:worker/pending', routes.api.post.pending)
 //Webhooks
 //app.get('/api/job/jobs_Cancelled', routes.webhooks.jobs.jobs_Cancelled)
 
