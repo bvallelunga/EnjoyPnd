@@ -3,8 +3,7 @@ var Company = Parse.Object.extend("Company")
 var User = Parse.Object.extend("User")
 
 module.exports.pending = function(req, res) {
-  var company = new Company()
-  company.id = req.param("company")
+  var company = req.company
   var workers = company.relation("workers")
   var pendingWorkers = company.relation("pendingWorkers")
   var query = new Parse.Query(User)
