@@ -14,8 +14,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        //Initialize Parse
+        ParseCrashReporting.enable()
+        Parse.setApplicationId("cJZxV4SMJNcriFmT5jQD4qY6tgQjo2Ci1WYN0IHc", clientKey: "1H2W80UK8vU73k94zD7I4nPqanmoslAo8IqVP8bv")
+        
+        // Register for Push Notitications, if running iOS 8
+        if application.respondsToSelector(Selector("registerUserNotificationSettings:")) {
+            let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            let settings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+            
+            // Register for Push Notifications before iOS 8
+        } else {
+            let notificationTypes = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+            application.registerForRemoteNotificationTypes(notificationTypes)
+        }
+        
+        // Track an app open here if we launch with a push, unless
+        // "content_available" was used to trigger a background push (introduced
+        // in iOS 7). In that case, we skip tracking here to avoid double
+        // counting the app-open.
+        if application.applicationState != UIApplicationState.Background {
+            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
+            let oldPushHandlerOnly = !self.respondsToSelector(Selector("application:didReceiveRemoteNotification:fetchCompletionHandler:"))
+            let noPushPayload = (launchOptions?.objectForKey(UIApplicationLaunchOptionsRemoteNotificationKey) == nil)
+            
+            if preBackgroundPush || oldPushHandlerOnly || noPushPayload {
+                PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
+            }
+        }
+        
         return true
     }
 

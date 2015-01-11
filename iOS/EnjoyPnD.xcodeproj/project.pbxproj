@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D306B0DB1A61D3E00039A158 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B0DA1A61D3E00039A158 /* AppDelegate.swift */; };
-		D306B0DD1A61D3E00039A158 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B0DC1A61D3E00039A158 /* ViewController.swift */; };
 		D306B0E01A61D3E00039A158 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D306B0DE1A61D3E00039A158 /* Main.storyboard */; };
 		D306B0E21A61D3E00039A158 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D306B0E11A61D3E00039A158 /* Images.xcassets */; };
 		D306B0F11A61D3E00039A158 /* EnjoyPnDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B0F01A61D3E00039A158 /* EnjoyPnDTests.swift */; };
@@ -33,6 +32,12 @@
 		D306B13A1A61E1810039A158 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1001A61E0780039A158 /* Bolts.framework */; };
 		D306B13B1A61E1810039A158 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1011A61E0780039A158 /* Parse.framework */; };
 		D306B13C1A61E1810039A158 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1021A61E0780039A158 /* ParseCrashReporting.framework */; };
+		D306B1421A61E30C0039A158 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D306B1411A61E30C0039A158 /* AudioToolbox.framework */; };
+		D306B1441A61E5480039A158 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306B1431A61E5480039A158 /* HomeController.swift */; };
+		D3C0F4451A61EB860092F126 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4441A61EB860092F126 /* User.swift */; };
+		D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */; };
+		D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F4481A61EE350092F126 /* LoginViewController.swift */; };
+		D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,6 @@
 		D306B0D51A61D3E00039A158 /* EnjoyPnD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyPnD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D306B0D91A61D3E00039A158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D306B0DA1A61D3E00039A158 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D306B0DC1A61D3E00039A158 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D306B0DF1A61D3E00039A158 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D306B0E11A61D3E00039A158 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D306B0EA1A61D3E00039A158 /* EnjoyPnDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnjoyPnDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,13 @@
 		D306B1221A61E1450039A158 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D306B1241A61E14E0039A158 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D306B1261A61E1590039A158 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D306B13E1A61E23C0039A158 /* EnjoyPnD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnjoyPnD-Bridging-Header.h"; sourceTree = "<group>"; };
+		D306B1411A61E30C0039A158 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D306B1431A61E5480039A158 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		D3C0F4441A61EB860092F126 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAnimationSegue.swift; sourceTree = "<group>"; };
+		D3C0F4481A61EE350092F126 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D306B1421A61E30C0039A158 /* AudioToolbox.framework in Frameworks */,
 				D306B1291A61E1810039A158 /* QuartzCore.framework in Frameworks */,
 				D306B12A1A61E1810039A158 /* MobileCoreServices.framework in Frameworks */,
 				D306B12B1A61E1810039A158 /* CoreLocation.framework in Frameworks */,
@@ -153,6 +165,7 @@
 				D306B0FA1A61DF930039A158 /* Ubuntu.ttf */,
 				D306B0E11A61D3E00039A158 /* Images.xcassets */,
 				D306B0D91A61D3E00039A158 /* Info.plist */,
+				D306B13E1A61E23C0039A158 /* EnjoyPnD-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,8 +190,9 @@
 		D306B0FC1A61DFF20039A158 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D306B0DE1A61D3E00039A158 /* Main.storyboard */,
 				D306B0DA1A61D3E00039A158 /* AppDelegate.swift */,
+				D306B0DE1A61D3E00039A158 /* Main.storyboard */,
+				D3C0F4461A61EC970092F126 /* NoAnimationSegue.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -186,6 +200,7 @@
 		D306B0FD1A61DFFC0039A158 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D3C0F4441A61EB860092F126 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -193,7 +208,9 @@
 		D306B0FE1A61E00E0039A158 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D306B0DC1A61D3E00039A158 /* ViewController.swift */,
+				D306B1431A61E5480039A158 /* HomeController.swift */,
+				D3C0F4481A61EE350092F126 /* LoginViewController.swift */,
+				D3C0F44A1A61EE3F0092F126 /* RegisterViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +225,7 @@
 		D306B1281A61E1660039A158 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D306B1411A61E30C0039A158 /* AudioToolbox.framework */,
 				D306B1261A61E1590039A158 /* QuartzCore.framework */,
 				D306B1241A61E14E0039A158 /* MobileCoreServices.framework */,
 				D306B1221A61E1450039A158 /* CoreLocation.framework */,
@@ -333,8 +351,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D306B0DD1A61D3E00039A158 /* ViewController.swift in Sources */,
+				D306B1441A61E5480039A158 /* HomeController.swift in Sources */,
 				D306B0DB1A61D3E00039A158 /* AppDelegate.swift in Sources */,
+				D3C0F4451A61EB860092F126 /* User.swift in Sources */,
+				D3C0F44B1A61EE3F0092F126 /* RegisterViewController.swift in Sources */,
+				D3C0F4491A61EE350092F126 /* LoginViewController.swift in Sources */,
+				D3C0F4471A61EC970092F126 /* NoAnimationSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +474,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -461,6 +485,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EnjoyPnD/EnjoyPnD-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -470,7 +497,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -479,6 +508,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EnjoyPnD/EnjoyPnD-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
