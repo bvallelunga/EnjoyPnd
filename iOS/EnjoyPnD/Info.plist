@@ -40,6 +40,8 @@
 	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Having your location will allow us to select the closest jobs for you!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Ubuntu.ttf</string>
