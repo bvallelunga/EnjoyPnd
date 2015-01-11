@@ -98,7 +98,7 @@ GET /api/:job/status
 
 **Returns**
 
-'''
+```
 {
   status: Float
   success: Boolean
