@@ -71,12 +71,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayloadInBackground(userInfo, block: nil)
         }
         
-        if let action = userInfo["action"] as? String {
-            if action == "update.config" {
+        if var user = User.current() {
+            if let action = userInfo["action"] as? String {
+                if action == "job.invite" {
+                    var window = UIApplication.sharedApplication().keyWindow
+                    var controller = window?.visibleViewController() as? MapViewController
+                    
+                    if user.status == 2 {
+                        if let id = userInfo["job"] as? String {
+                            Job.get(id, callback: { (element) -> Void in
+                                var job = element as Job
+                                controller?.showPopView(job)
+                            })
+                        }
+                    }
+                }
             }
         }
-        
-        println(123)
     }
 
     func applicationWillResignActive(application: UIApplication) {

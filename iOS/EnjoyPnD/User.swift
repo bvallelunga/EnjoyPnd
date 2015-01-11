@@ -16,6 +16,7 @@ class User {
     var name: String!
     var email: String!
     var description: String!
+    var status: Int!
     var selectedCompanies: NSMutableArray = selectCompanies
     var pendingCompanies: NSMutableArray = pendCompanies
     var parse: PFUser!
@@ -27,6 +28,7 @@ class User {
         self.parse = user
         self.username = user["username"] as? String
         self.email = user["email"] as? String
+        self.status = user["status"] as? Int
         self.description = user["description"] as? String
     }
     
@@ -86,6 +88,7 @@ class User {
     
     func setStatus(status: Int) {
         self.parse["status"] = status
+        self.status = status
         self.parse.saveInBackgroundWithBlock(nil)
     }
     
