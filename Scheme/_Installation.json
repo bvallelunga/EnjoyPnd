@@ -1,0 +1,28 @@
+{ "results": [
+	{
+        "appIdentifier": "com.vallelungabrian.EnjoyPnD",
+        "appName": "EnjoyPnD",
+        "appVersion": "1",
+        "appVersionBuild": "1.0 - 1",
+        "badge": 0,
+        "channels": [
+            "sharedPost",
+            "juicyPost",
+            "termsChanged",
+            "juicyUser"
+        ],
+        "createdAt": "2015-01-11T07:28:17.329Z",
+        "deviceToken": "e5a8e5073744993b0104a30a2eee041d68572c99ea9ebfe24b5632f9f564e4b8",
+        "deviceType": "ios",
+        "installationId": "8327715c-8df3-468c-a4bd-8cd1d083bc45",
+        "objectId": "9ob2uyIhOY",
+        "parseVersion": "1.6.1",
+        "timeZone": "America/Los_Angeles",
+        "updatedAt": "2015-01-12T19:57:42.832Z",
+        "user": {
+            "__type": "Pointer",
+            "className": "_User",
+            "objectId": "ZiYOFxAOu2"
+        }
+    }
+] }
