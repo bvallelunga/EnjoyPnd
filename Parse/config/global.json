@@ -2,12 +2,12 @@
     "applications": {
         "_default": {
             "link": "enjoypnd"
-        }, 
+        },
         "enjoypnd": {
-            "applicationId": "cJZxV4SMJNcriFmT5jQD4qY6tgQjo2Ci1WYN0IHc", 
-            "masterKey": "3Ksyqlp2E2gzpbIq6Nlyz89M5dHdCALPzsXScQfJ"
+            "applicationId": "",
+            "masterKey": ""
         }
-    }, 
+    },
     "global": {
         "parseVersion": "1.3.3"
     }
