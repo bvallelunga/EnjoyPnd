@@ -6,15 +6,6 @@
 //  Copyright (c) 2015 Brian Vallelunga. All rights reserved.
 //
 
-
-//
-//  ballView.swift
-//  Juicy
-//
-//  Created by Brian Vallelunga on 8/9/14.
-//  Copyright (c) 2014 Brian Vallelunga. All rights reserved.
-//
-
 import UIKit
 
 @objc protocol BallViewDelegate {
