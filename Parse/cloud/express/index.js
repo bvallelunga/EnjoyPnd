@@ -60,6 +60,7 @@ app.use(function(req, res, next) {
 
 // Landing
 app.get('/', routes.core.auth, routes.workers.home)
+app.get('/demo', routes.core.demo)
 app.get('/jobs', routes.core.auth, routes.jobs.home)
 app.get('/account', routes.core.auth, routes.accounts.home)
 app.get('/logout', routes.core.logout)

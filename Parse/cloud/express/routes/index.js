@@ -16,6 +16,17 @@ module.exports.auth = function(req, res, next) {
 	}
 }
 
+module.exports.demo = function(req, res) {
+  Parse.User.logIn(
+    "demo@demo.com", "demo"
+  ).then(function(user) {
+    req.session.user = user.id
+    res.redirect("/")
+  }, function() {
+    res.errorT("Invalid Credentials :(")
+  })
+}
+
 module.exports.login = function(req, res) {
   Parse.User.logIn(
     req.param("email"), req.param("password")

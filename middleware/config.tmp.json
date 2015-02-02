@@ -1,0 +1,53 @@
+{
+	"general":{
+		"company":"EnjoyPnd",
+		"logo":"EnjoyPnd",
+		"delimeter":" · ",
+		"description":[
+			"Uber for X Carrier/Driver Infrastructure!"
+		],
+		"default":"/",
+		"port": "3000"
+	},
+	"cookies":{
+		"session":{
+			"key":"usrs",
+			"secret":"d1R9N46o08cKU9H0IO0b"
+		}
+	},
+	"orm":{
+		"preload":false,
+		"sync":true,
+		"debug":false,
+		"protocol":"mysql:",
+		"host":"127.0.0.1",
+		"database":"",
+		"user":"root",
+		"password":""
+	},
+	"stripe":{
+		"production":"",
+		"development":""
+	},
+	"icons":{},
+	"forever": {
+		"uid": "dintopia",
+		"silent": false,
+		"watch": true,
+		"watch_directory": "./",
+		"watch_ignore_dot": true,
+		"watch_ignore_patterns": [
+			"config.tmp.json",
+			"node_modules/**",
+			"assets/less/**",
+			"assets/coffee/**",
+			"logs/**",
+			"**.log",
+			".*/**",
+			".*"
+		],
+		"max_failures": 1000,
+		"output_log": "logs/server.out",
+		"error_log": "logs/log.error"
+	}
+}
