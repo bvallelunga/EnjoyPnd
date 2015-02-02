@@ -6,6 +6,18 @@ $(function() {
       })
     })
   }
+
+  $(".simulateJob").click(function() {
+    var button = $(this).text("creating job...")
+
+    $.post("/jobs/simulate", function(response) {
+      if(response.success) {
+        window.location.reload()
+      } else {
+         button.text("Failed to create job")
+      }
+    })
+  })
 })
 
 function localLatLng(cb) {

@@ -123,6 +123,9 @@ Parse.Cloud.define("carrier_search", function(req, res) {
         job: job.id
       }
     }).then(function() {
+      job.set("status", 1)
+      return job.save()
+    }).then(function() {
       res.success("It worked")
     })
   })
@@ -135,12 +138,12 @@ Parse.Cloud.job("carrier_search", function(req, res) {
 
 Parse.Cloud.job("new_job", function(req, res) {
   Parse.Cloud.httpRequest({
-    url:'http://enjoypnd.soojuicy.com/api/job',
+    url:'http://www.enjoypnd.com/api/job',
     method: "POST",
     params: {
-      key: "qjn0pdyl28qqto6r",
-      secret: "r3jy1qfw2ltbj4i",
-      name: "Ride to Surf Rider Cafe",
+      key: "asdfasd324zvvtert",
+      secret: "asdfhkj3523kjhlkasdf",
+      name: "Dry cleaning pickup",
       pickup: JSON.stringify({
         address: "641 Merrill Road, Santa Cruz CA 95064, United States",
         lat: 36.999704,

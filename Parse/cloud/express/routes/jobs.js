@@ -1,5 +1,33 @@
 var Jobs = Parse.Object.extend("Jobs")
 
+module.exports.simulate = function(req, res) {
+  var company = req.user.get("company")
+
+  company.fetch().then(function() {
+    return Parse.Cloud.httpRequest({
+      url:'http://www.enjoypnd.com/api/job',
+      method: "POST",
+      params: {
+        key: company.get("apiKey"),
+        secret: company.get("apiSecret"),
+        name: "Dry cleaning pickup",
+        pickup: JSON.stringify({
+          address: "641 Merrill Road, Santa Cruz CA 95064, United States",
+          lat: 36.999704,
+          lng: -122.052111
+        }),
+        destination: JSON.stringify({
+          address: "429 Front Street, Santa Cruz, CA",
+          lat: 36.971435,
+          lng: -122.024496
+        })
+      }
+    })
+  }).then(function(response) {
+    res.successT()
+  })
+}
+
 module.exports.home = function(req, res) {
   var pendingJobs = []
   var activeJobs = []

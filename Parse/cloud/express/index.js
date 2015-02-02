@@ -72,6 +72,7 @@ app.post('/account/company', routes.core.auth, routes.accounts.company)
 
 // Jobs
 app.get('/job/:job/cancel', routes.core.auth, routes.jobs.cancel)
+app.post('/jobs/simulate', routes.core.auth, routes.jobs.simulate)
 
 // Workers
 app.get('/worker/:user/invite', routes.core.auth, routes.workers.invited)
