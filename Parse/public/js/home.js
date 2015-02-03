@@ -18,6 +18,19 @@ $(function() {
       }
     })
   })
+
+  $(".search-form").submit(function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    setUpMap({
+      address: $(this).find(".search").val()
+    })
+  })
+
+  if($(".search").length > 0) {
+    new google.maps.places.Autocomplete($(".search").get(0));
+  }
 })
 
 function localLatLng(cb) {
@@ -53,6 +66,7 @@ function haversine(start, end, options) {
 
 function setUpMap(options) {
   var geocoder = new google.maps.Geocoder()
+
   return geocoder.geocode(options, function(results, status) {
     var pin = {
       url: "/images/pin.png",
@@ -70,16 +84,23 @@ function setUpMap(options) {
       anchor: new google.maps.Point(0, 32)
     }
 
-    var map = new google.maps.Map($('.map').get(0), {
-      zoom: 14,
-      center: results[0].geometry.location,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      disableDefaultUI: true,
-      zoomControl: true,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      }
-    })
+    if(!window.gMap) {
+      window.gMap = new google.maps.Map($('.map').get(0), {
+        zoom: 14,
+        center: results[0].geometry.location,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        }
+      })
+
+
+      $(".search-form").show()
+    } else {
+      window.gMap.setCenter(results[0].geometry.location)
+    }
 
     $(".item").each(function() {
       var lat = parseFloat($(this).data("lat"))
@@ -87,7 +108,7 @@ function setUpMap(options) {
       var latLng = new google.maps.LatLng(lat, ln)
       var marker = new google.maps.Marker({
         position: latLng,
-        map: map,
+        map: window.gMap,
         icon: pin
       })
 
