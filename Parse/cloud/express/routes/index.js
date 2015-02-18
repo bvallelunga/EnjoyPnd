@@ -51,3 +51,11 @@ module.exports.logout = function(req, res) {
 module.exports.notfound = function(req, res) {
   res.redirect("/")
 }
+
+module.exports.pitch = function(req, res) {
+  res.redirect("https://docs.google.com/presentation/d/1CvTWcm3pFmrR_IDtHTNbYC8A7zkxNs3E9UHO8aKcYUI/edit?usp=sharing")
+}
+
+module.exports.slide = function(req, res) {
+  res.redirect("https://docs.google.com/presentation/d/1MlkJ4u-m7YIxk14u3lRUpalmhWdO1GukknwTozbbxb8/edit?usp=sharing")
+}

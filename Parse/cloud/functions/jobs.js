@@ -110,10 +110,10 @@ Parse.Cloud.define("carrier_search", function(req, res) {
     var query = new Parse.Query(Parse.Installation)
     var userQuery = new Parse.Query(Parse.User);
 
-    userQuery.equalTo("status", 2)
-    userQuery.near("lastGeo", job.get("pickupGeo"))
-    userQuery.limit(1)
-    userQuery.ascending("lastGeo")
+    //userQuery.equalTo("status", 2)
+    //userQuery.near("lastGeo", job.get("pickupGeo"))
+    //userQuery.limit(1)
+    //userQuery.ascending("lastGeo")
     query.matchesQuery("user", userQuery)
 
     return Parse.Push.send({

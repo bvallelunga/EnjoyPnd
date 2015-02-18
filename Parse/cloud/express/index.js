@@ -66,6 +66,10 @@ app.get('/account', routes.core.auth, routes.accounts.home)
 app.get('/logout', routes.core.logout)
 app.post('/login', routes.core.login)
 
+// Google Docs
+app.get('/pitch', routes.core.pitch)
+app.get('/slide', routes.core.slide)
+
 //Accounts
 app.post('/account', routes.core.auth, routes.accounts.user)
 app.post('/account/company', routes.core.auth, routes.accounts.company)
